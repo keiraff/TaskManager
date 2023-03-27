@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  task-manager-development-rails:
+    container_name: task-manager-development-rails
+    image: task-manager-development-rails:latest
+    build:
+      context: ../..
+      dockerfile: docker/Dockerfile
+    entrypoint: /task-manager/docker/development/entrypoint.sh
+    command: bundle exec rails s -p 3000 -b 0.0.0.0
+    restart: always
+    volumes:
+      - ../../.:/task-manager
+    ports:
+      - "3000:3000"
+    env_file: ../../.env
+    depends_on:
+      task-manager-development-postgres:
+        condition: service_healthy
+    networks:
+      - task-manager-development-network
+
+
+  task-manager-development-postgres:
+    container_name: task-manager-development-postgres
+    image: postgres:15.2-alpine
+    volumes:
+      - task-manager-development-postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+    user: postgres
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - task-manager-development-network
+
+networks:
+  task-manager-development-network:
+    name: task-manager-development-network
+
+volumes:
+  task-manager-development-postgres-data:
