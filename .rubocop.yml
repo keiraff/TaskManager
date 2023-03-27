@@ -9,6 +9,7 @@ AllCops:
   Exclude:
     - 'bin/**/**'
     - 'vendor/**/**'
+    - 'db/schema.rb'
 
 Style/Documentation:
   Enabled: false
