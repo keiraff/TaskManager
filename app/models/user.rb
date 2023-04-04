@@ -20,7 +20,7 @@ class User < ApplicationRecord
   before_validation :downcase_email
   has_secure_password
 
-  validates :email, presence: true, uniqueness: true, format: /.+@.+\..+/
+  validates :email, presence: true, uniqueness: true, format: /\A.+@.+\..+\z/
   validates :password, presence: true, confirmation: true, length: { minimum: 6 }
 
   private
