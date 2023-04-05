@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe User do
-  describe "validations" do
-    subject { build(:user) }
+RSpec.describe User, type: :model do
+  subject { build(:user) }
 
+  describe "validations" do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
     it { is_expected.not_to allow_values("@", "2@com", "@mail.com", "gmail").for(:email) }
