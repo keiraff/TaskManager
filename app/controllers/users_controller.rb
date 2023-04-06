@@ -13,12 +13,10 @@ class UsersController < AuthenticationController
 
   def create
     @user = User.create(user_params)
-    if @user.valid?
-      @user.save
-      session[:user_id] = @user.id
-      redirect_to @user
+    if @user.save
+      redirect_to login_url
     else
-      redirect_to signup_path
+      redirect_to signup_url
     end
   end
 

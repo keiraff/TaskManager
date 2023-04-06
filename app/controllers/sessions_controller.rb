@@ -9,12 +9,12 @@ class SessionsController < AuthenticationController
       log_in
       redirect_to @user
     else
-      redirect_to login_path
+      redirect_to login_url
     end
   end
 
   def destroy
     log_out
-    redirect_to login_path
+    redirect_to login_url
   end
 end
