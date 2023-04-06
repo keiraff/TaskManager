@@ -1,0 +1,17 @@
+<h1>Sign in</h1>
+
+<div class="form" style="display: inline-block">
+  <%= form_for @user do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, placeholder: "Name" %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, placeholder: "Surname" %>
+    <%= f.label :email %>
+    <%= f.text_field :email, placeholder: "Email" %>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+    <%= f.submit "Create Account" %>
+  <% end %>
+</div>
