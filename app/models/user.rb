@@ -20,5 +20,5 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: /\A.+@.+\..+\z/
-  validates :password, presence: true, confirmation: true, length: { minimum: 6 }
+  validates :password, confirmation: true, length: { minimum: 6 }
 end
