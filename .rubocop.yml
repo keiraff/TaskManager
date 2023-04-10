@@ -46,3 +46,6 @@ Metrics/MethodLength:
 
 RSpec/ImplicitSubject:
   Enabled: false
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false
