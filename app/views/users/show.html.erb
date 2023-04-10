@@ -1,0 +1,5 @@
+<h2>Welcome to the page of <%= @user.first_name %> <%= @user.last_name %></h2>
+
+  <% if current_user == @user %>
+    <h3>Authorized</h3>
+  <% end %>
