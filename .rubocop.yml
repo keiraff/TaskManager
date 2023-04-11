@@ -38,6 +38,12 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: 'comma'
 
+Style/SymbolArray:
+  EnforcedStyle: "brackets"
+
+Style/WordArray:
+  EnforcedStyle: "brackets"
+
 Lint/MissingSuper:
   Enabled: false
 
