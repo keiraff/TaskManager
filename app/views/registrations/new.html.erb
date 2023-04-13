@@ -1,0 +1,35 @@
+<h1>Sign up</h1>
+
+<div>
+  <%= form_with model: @user, url: registrations_url do |f| %>
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, placeholder: "First Name" %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, placeholder: "Last Name" %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: "Email" %>
+      <%= @user.errors.messages_for(:email).first if @user.errors.any? %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: "Password" %>
+      <%= @user.errors.messages_for(:password).first if @user.errors.any? %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+      <%= @user.errors.messages_for(:password_confirmation).first if @user.errors.any? %>
+    </div>
+    <br>
+    <%= f.submit "Create Account" %>
+  <% end %>
+</div>
