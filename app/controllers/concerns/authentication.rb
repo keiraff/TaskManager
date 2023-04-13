@@ -3,6 +3,10 @@
 module Authentication
   extend ActiveSupport::Concern
 
+  included do
+    before_action :authenticate_user, only: [:show], controller: :user
+  end
+
   def current_user
     return unless session[:user_id]
 
@@ -21,7 +25,7 @@ module Authentication
     session[:user_id] = nil
   end
 
-  def authorized
+  def authenticate_user
     redirect_to new_session_url unless logged_in?
   end
 end
