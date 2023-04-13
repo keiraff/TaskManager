@@ -55,3 +55,6 @@ RSpec/ImplicitSubject:
 
 RSpec/Rails/InferredSpecType:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 10
