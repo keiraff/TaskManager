@@ -6,7 +6,8 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.create(create_params)
+    @user = User.new(create_params)
+
     if @user.save
       redirect_to new_session_url
     else

@@ -19,7 +19,8 @@ RSpec.describe "POST /registrations", type: :request do
 
       expect(response).to have_http_status(:found)
       expect(response.body).to include(new_session_url)
-      expect(User.last).to have_attributes(email: attributes[:email])
+
+      expect(User.last).to have_attributes(attributes.except(:password, :password_confirmation))
     end
   end
 
