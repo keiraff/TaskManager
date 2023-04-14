@@ -1,37 +1,41 @@
 # frozen_string_literal: true
 
-RSpec.describe "Sessions", type: :request do
+RSpec.describe "POST /sessions", type: :request do
+  subject(:request) { post sessions_url, params: attributes }
+
   let(:user) { create(:user) }
 
-  describe "POST /create" do
-    context "when user is valid" do
-      before do
-        post sessions_url, params: { email: user.email, password: user.password }
-      end
-
-      it { expect(user).to be_valid }
-
-      it "returns status code 302" do
-        expect(response).to have_http_status(:found)
-      end
-
-      it "redirects users/id" do
-        expect(response.body).to include(user_url(user.id))
-      end
+  context "with valid params" do
+    let(:attributes) do
+      {
+        email: user.email,
+        password: user.password,
+      }
     end
 
-    context "when user is invalid" do
-      before do
-        post sessions_url, params: { email: nil, password: nil }
-      end
+    it "returns success response" do
+      request
 
-      it "returns status code 302" do
-        expect(response).to have_http_status(:found)
-      end
+      expect(user).to be_valid
 
-      it "redirects to login_url" do
-        expect(response.body).to include(new_session_url)
-      end
+      expect(response).to have_http_status(:found)
+      expect(response.body).to include(user_url(user.id))
+    end
+  end
+
+  context "with invalid params" do
+    let(:attributes) do
+      {
+        email: nil,
+        password: nil,
+      }
+    end
+
+    it "returns error" do
+      request
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include('form action="/sessions"')
     end
   end
 end

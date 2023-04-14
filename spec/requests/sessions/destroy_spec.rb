@@ -1,26 +1,18 @@
 # frozen_string_literal: true
 
-RSpec.describe "Sessions", type: :request do
+RSpec.describe "DELETE sessions/:id", type: :request do
   let(:user) { create(:user) }
 
-  describe "DELETE /destroy" do
-    context "when logging out" do
-      before do
-        post sessions_url, params: { email: user.email, password: user.password }
-      end
+  context "when logging out" do
+    it "returns success response" do
+      login(user)
 
-      it "user logged in" do
-        expect(response.body).to include(user_url(user.id))
-      end
+      expect(response.body).to include(user_url(user.id))
 
-      it "returns status code 302" do
-        expect(response).to have_http_status(:found)
-      end
+      logout(user)
 
-      it "redirects to login_url" do
-        delete session_url(user.id)
-        expect(response.body).to include(new_session_url)
-      end
+      expect(response).to have_http_status(:found)
+      expect(response.body).to include(new_session_url)
     end
   end
 end
