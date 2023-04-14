@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
+
+  root "static_pages#home", page: "static_pages/home"
 end
