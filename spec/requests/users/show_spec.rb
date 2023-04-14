@@ -1,40 +1,28 @@
 # frozen_string_literal: true
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "GET /users/:id", type: :request do
+  subject(:request) { get user_url(user.id) }
+
   let(:user) { create(:user) }
 
-  describe "GET /show" do
-    context "when user not authorized" do
-      before do
-        get user_url(user.id)
-      end
+  context "when user not authorized" do
+    it "returns error" do
+      request
 
-      it "returns status code 302" do
-        expect(response).to have_http_status(:found)
-      end
-
-      it "redirects to login_url" do
-        expect(response.body).to include(new_session_url)
-      end
+      expect(response).to have_http_status(:found)
+      expect(response.body).to include(new_session_url)
     end
+  end
 
-    context "when user authorized" do
-      before do
-        post sessions_url, params: { email: user.email, password: user.password }
-        get user_url(user.id)
-      end
+  context "when user authorized" do
+    it "returns success responce" do
+      login(user)
 
-      it "returns status code 200" do
-        expect(response).to have_http_status(:ok)
-      end
+      request
 
-      it "returns a valid html response" do
-        expect(response.content_type).to eq("text/html; charset=utf-8")
-      end
-
-      it "shows users/id" do
-        expect(response.body).to include("Welcome to the page")
-      end
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(response.body).to include("Welcome to the page")
     end
   end
 end
