@@ -11,10 +11,7 @@
 
 <body>
 <div id="container">
-  <% if logged_in? %>
-    <%= button_to "Logout", session_path, method: :delete %>
-  <% end %>
-  <br>
+  <%= render 'layouts/flash_messages' %>
   <%= yield %>
 </div>
 </body>

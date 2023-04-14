@@ -7,9 +7,11 @@ class SessionsController < AuthenticationController
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
       log_in
+      flash[:notice] = "Authorized"
       redirect_to @user
     else
-      redirect_to new_session_url
+      flash[:error] = "Email or password is incorrect"
+      render "new"
     end
   end
 
