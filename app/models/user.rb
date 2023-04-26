@@ -17,6 +17,7 @@
 #  index_users_on_email  (email) UNIQUE
 #
 class User < ApplicationRecord
+  has_many :categories, dependent: :destroy
   has_secure_password
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: /\A.+@.+\..+\z/
