@@ -2,6 +2,6 @@
 
 class StaticPagesController < AuthenticationController
   def home
-    render template: params[:page].to_s
+    render "home"
   end
 end

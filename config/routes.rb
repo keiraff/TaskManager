@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 
-  root "static_pages#home", page: "static_pages/home"
+  root "static_pages#home"
 end
