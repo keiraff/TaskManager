@@ -5,16 +5,7 @@ RSpec.describe "GET /users/:id", type: :request do
 
   let(:user) { create(:user) }
 
-  context "when user not authenticated" do
-    before do
-      request
-    end
-
-    it "returns error" do
-      expect(response).to have_http_status(:found)
-      expect(response.body).to include(new_session_url)
-    end
-  end
+  it_behaves_like "unauthenticated user request", "/sessions/new"
 
   context "when user authenticated" do
     before do
