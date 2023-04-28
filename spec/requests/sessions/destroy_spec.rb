@@ -1,18 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe "DELETE sessions/:id", type: :request do
-  subject(:request) { delete session_url(user.id) }
-
-  let(:user) { create(:user) }
-
-  before do
-    login(user)
-
-    request
-  end
-
   context "when logged out" do
+    let(:user) { create(:user) }
+
+    before do
+      login(user)
+    end
+
     it "returns success response" do
+      delete "/sessions/#{user.id}"
+
       expect(response).to have_http_status(:found)
       expect(response.body).to include(new_session_url)
 

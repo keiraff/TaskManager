@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "POST /sessions", type: :request do
-  subject(:request) { post sessions_url, params: attributes }
+  subject(:request) { post "/sessions", params: attributes }
 
   let(:user) { create(:user) }
 

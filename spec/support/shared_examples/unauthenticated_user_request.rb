@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples "unauthenticated user request" do |path|
+RSpec.shared_examples "unauthenticated user request" do |verb, path|
   context "when user not authenticated" do
-    before do
-      request
-    end
+    it "redirects to login" do
+      public_send verb, path
 
-    it "redirects to #{path}" do
       expect(response).to have_http_status(:found)
-      expect(response).to redirect_to path
+      expect(response).to redirect_to "/sessions/new"
     end
   end
 end
