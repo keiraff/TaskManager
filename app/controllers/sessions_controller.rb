@@ -8,7 +8,8 @@ class SessionsController < AuthenticationController
 
     if @user&.authenticate(params[:password])
       log_in
-      flash[:notice] = "Authorized"
+
+      flash[:notice] = "Authenticated"
       redirect_to @user
     else
       flash[:error] = "Email or password is incorrect"
@@ -18,6 +19,7 @@ class SessionsController < AuthenticationController
 
   def destroy
     log_out
+
     redirect_to new_session_url
   end
 end
