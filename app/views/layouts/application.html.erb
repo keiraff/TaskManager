@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TaskManager</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>TaskManager</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
 
-<body>
-<div id="container">
-  <%= render 'layouts/flash_messages' %>
-  <%= yield %>
-</div>
-</body>
+  <body>
+    <div id="container">
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+  </body>
 </html>
