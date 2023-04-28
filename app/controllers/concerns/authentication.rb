@@ -8,7 +8,7 @@ module Authentication
   end
 
   def current_user
-    return if cookies[:user_id].blank?
+    return if cookies.encrypted[:user_id].blank?
 
     @user = User.find(cookies.encrypted[:user_id])
   end
