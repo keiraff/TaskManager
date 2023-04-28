@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "POST /registrations", type: :request do
-  subject(:request) { post registrations_url, params: { user: attributes } }
+  subject(:request) { post "/registrations", params: { user: attributes } }
 
   context "with valid params" do
     let(:attributes) do
