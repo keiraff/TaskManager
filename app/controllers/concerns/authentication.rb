@@ -8,9 +8,9 @@ module Authentication
   end
 
   def current_user
-    return unless session[:user_id]
+    return if cookies[:user_id].blank?
 
-    @user = User.find(session[:user_id])
+    @user = User.find(cookies.encrypted[:user_id])
   end
 
   def logged_in?
@@ -18,11 +18,11 @@ module Authentication
   end
 
   def log_in
-    session[:user_id] = @user.id
+    cookies.encrypted[:user_id] = @user.id
   end
 
   def log_out
-    session[:user_id] = nil
+    cookies.delete(:user_id)
   end
 
   def authenticate_user
