@@ -12,6 +12,8 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(create_params)
 
+    DefaultCategoriesService.call(@user)
+
     if @user.save
       redirect_to new_session_url
     else
