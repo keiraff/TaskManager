@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-class SessionsController < AuthenticationController
+class SessionsController < ApplicationController
+  include Authentication
+
+  before_action :authenticate_user, only: [:destroy]
+  before_action :redirect_to_user_page, only: [:new]
+
   def new; end
 
   def create

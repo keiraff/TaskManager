@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-class RegistrationsController < AuthenticationController
+class RegistrationsController < ApplicationController
+  include Authentication
+
+  before_action :redirect_to_user_page, only: [:new]
+
   def new
     @user = User.new
   end

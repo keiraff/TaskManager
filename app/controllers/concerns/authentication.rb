@@ -4,8 +4,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
-    before_action :authenticate_user, only: [:show], controller: :user
-    before_action :redirect_to_user_page, only: [:new, :home], controller: [:registrations, :sessions, :static_pages]
+    helper_method :logged_in?, :current_user
   end
 
   def current_user
