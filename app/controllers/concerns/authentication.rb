@@ -10,7 +10,7 @@ module Authentication
   def current_user
     return if cookies.encrypted[:user_id].blank?
 
-    @user = User.find(cookies.encrypted[:user_id])
+    @current_user ||= User.find(cookies.encrypted[:user_id])
   end
 
   def logged_in?
@@ -30,6 +30,6 @@ module Authentication
   end
 
   def redirect_to_user_page
-    redirect_to @user if logged_in?
+    redirect_to current_user if logged_in?
   end
 end
