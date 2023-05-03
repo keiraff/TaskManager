@@ -10,9 +10,10 @@ RSpec.describe Category, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
 
-    it {
-      is_expected.to validate_uniqueness_of(:name).case_insensitive.scoped_to(:user_id)
-                                                  .with_message("Category already exists.")
-    }
+    context "with user" do
+      subject { build(:category, :with_user) }
+
+      it { is_expected.to validate_uniqueness_of(:name).case_insensitive.scoped_to(:user_id) }
+    end
   end
 end

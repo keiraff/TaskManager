@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_secure_password }
 
   describe "associations" do
-    it { is_expected.to have_many(:categories).dependent(:destroy) }
+    it { is_expected.to have_many(:categories).dependent(:restrict_with_exception) }
   end
 
   describe "validations" do

@@ -2,7 +2,10 @@
 
 FactoryBot.define do
   factory :category do
-    association :user
     sequence(:name) { |n| "#{FFaker::Lorem.word}#{n}" }
+
+    trait :with_user do
+      association :user
+    end
   end
 end
