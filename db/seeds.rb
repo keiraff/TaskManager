@@ -9,12 +9,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Users
-User.destroy_all
-
-User.create(first_name: "Example",
-            last_name: "User",
-            email: "example@gmail.com",
-            password: "123456",
-            categories: Category.create([{ name: "Personal" },
-                                         { name: "Work" },
-                                         { name: "Vacation" }]))
+UserRegistrationService.call(first_name: "Example",
+                             last_name: "User",
+                             email: "example@gmail.com",
+                             password: "123456")
