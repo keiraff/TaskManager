@@ -2,9 +2,9 @@
 
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show] do
-    resources :categories, only: [:index]
-  end
+  resources :users, only: [:show]
+  resources :categories, only: [:index]
+
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 

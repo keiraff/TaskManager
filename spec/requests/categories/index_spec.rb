@@ -1,7 +1,21 @@
 # frozen_string_literal: true
 
-RSpec.describe "GET /users/:id/categories", type: :request do
-  it_behaves_like "authenticated user request", :get, "/users/1/categories", "Categories"
+RSpec.describe "GET /categories", type: :request do
+  context "when user authenticated" do
+    let(:user) { create(:user) }
 
-  it_behaves_like "unauthenticated user request", :get, "/users/1/categories"
+    before do
+      login(user)
+    end
+
+    it "returns success responce" do
+      get "/categories"
+
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(response.body).to include("Categories")
+    end
+  end
+
+  it_behaves_like "unauthenticated user request", :get, "/categories"
 end
