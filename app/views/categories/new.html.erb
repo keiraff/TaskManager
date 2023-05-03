@@ -1,0 +1,13 @@
+<h1>New Category</h1>
+
+<div>
+  <%= form_with model: @category do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "Category Name" %>
+      <%= @category.errors.messages_for(:name).first if @category.errors.any? %>
+    </div>
+    <br>
+    <%= f.submit "Create Category" %>
+  <% end %>
+</div>
