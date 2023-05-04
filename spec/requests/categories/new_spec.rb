@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "GET /users/:id/categories/new", type: :request do
+RSpec.describe "GET /categories/new", type: :request do
   context "when user authenticated" do
     let(:user) { create(:user) }
 
