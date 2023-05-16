@@ -5,8 +5,11 @@
   </div>
 </header>
 
-<div>
-  <% if @categories.any? %>
+<div class="mb-2">
+  <% if @categories.empty? %>
+    <br>
+    <span>You don't have any categories yet.</span>
+  <% else %>
     <ul class="list-group list-group-flush">
       <%= render @categories %>
     </ul>

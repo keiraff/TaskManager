@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CategoriesController < AuthenticatedController
+  before_action :set_category, only: [:destroy]
+
   def index
     @pagy, @categories = pagy(categories_scope)
   end
@@ -21,7 +23,18 @@ class CategoriesController < AuthenticatedController
     end
   end
 
+  def destroy
+    @category.destroy
+
+    flash[:success] = "Category deleted!"
+    redirect_to categories_url
+  end
+
   private
+
+  def set_category
+    @category = Category.find_by(id: params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
