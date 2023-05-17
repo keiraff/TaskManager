@@ -15,9 +15,8 @@ class ApplicationService
     self.value = value
   end
 
-  def failure(value)
-    self.value = value
-    self.errors = value.errors
+  def failure(errors)
+    self.errors = errors
   end
 
   def self.call(*args)

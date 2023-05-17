@@ -3,21 +3,25 @@
 class UserRegistrationService < ApplicationService
   DEFAULT_CATEGORIES_NAMES = ["Personal", "Work", "Vacation"].freeze
 
+  attr_reader :params, :user
+
   def initialize(params)
     @params = params
   end
 
   def call
-    @user = User.new(@params)
+    self.user = User.new(@params)
 
-    DEFAULT_CATEGORIES_NAMES.each do |name|
-      @user.categories.new(name: name)
-    end
+    user.categories.new(DEFAULT_CATEGORIES_NAMES.map { |name| { name: name } })
 
-    if @user.save
-      success(@user)
+    if user.save
+      success(user)
     else
-      failure(@user)
+      failure(user.errors.full_messages)
     end
   end
+
+  private
+
+  attr_writer :user
 end
