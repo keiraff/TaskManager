@@ -4,13 +4,13 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
-    before_action :authenticate_user, only: [:show], controller: :user
+    helper_method :logged_in?, :current_user
   end
 
   def current_user
     return if cookies.encrypted[:user_id].blank?
 
-    @user = User.find(cookies.encrypted[:user_id])
+    @current_user ||= User.find(cookies.encrypted[:user_id])
   end
 
   def logged_in?
@@ -27,5 +27,9 @@ module Authentication
 
   def authenticate_user
     redirect_to new_session_url unless logged_in?
+  end
+
+  def redirect_to_user_page
+    redirect_to current_user if logged_in?
   end
 end

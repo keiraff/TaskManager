@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class UsersController < AuthenticationController
+class UsersController < AuthenticatedController
   def show; end
 end
