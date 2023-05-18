@@ -10,10 +10,13 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(create_params)
+    result = UserRegistrationService.call(create_params)
 
-    if @user.save
-      redirect_to new_session_url
+    @user = result.user
+    if result.success?
+      log_in
+
+      redirect_to @user
     else
       render "new"
     end

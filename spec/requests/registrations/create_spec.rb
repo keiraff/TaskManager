@@ -18,7 +18,7 @@ RSpec.describe "POST /registrations", type: :request do
       expect { request }.to change(User, :count).by(1)
 
       expect(response).to have_http_status(:found)
-      expect(response.body).to include(new_session_url)
+      expect(response).to redirect_to("/users/#{User.last.id}")
 
       expect(User.last).to have_attributes(attributes.except(:password, :password_confirmation))
     end
