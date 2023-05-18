@@ -1,11 +1,7 @@
 <h1>Categories</h1>
 
-<div class="container">
+<div>
   <ul>
-    <% @categories.each do |category| %>
-      <div>
-        <li><%= category.name %></li>
-      </div>
-    <% end %>
+    <%= render @categories %>
   </ul>
 </div>
