@@ -2,6 +2,6 @@
 
 class CategoriesController < AuthenticatedController
   def index
-    @categories = current_user.categories
+    @pagy, @categories = pagy(current_user.categories, items: 10)
   end
 end
