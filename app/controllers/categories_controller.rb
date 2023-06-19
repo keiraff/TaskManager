@@ -2,15 +2,15 @@
 
 class CategoriesController < AuthenticatedController
   def index
-    @pagy, @categories = pagy(current_user.categories)
+    @pagy, @categories = pagy(categories_scope)
   end
 
   def new
-    @category = Category.new
+    @category = categories_scope.new
   end
 
   def create
-    @category = current_user.categories.new(category_params)
+    @category = categories_scope.new(category_params)
 
     if @category.save
       flash[:success] = "Category created!"
@@ -25,5 +25,9 @@ class CategoriesController < AuthenticatedController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def categories_scope
+    current_user.categories
   end
 end
