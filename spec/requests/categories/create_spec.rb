@@ -17,12 +17,12 @@ RSpec.describe "POST /categories", type: :request do
     end
 
     it "returns success response" do
-      expect { request }.to change(Category, :count).by(1)
+      expect { request }.to change(user.categories, :count).by(1)
 
       expect(response).to have_http_status(:found)
       expect(response).to redirect_to "/categories"
 
-      expect(Category.last).to have_attributes(attributes)
+      expect(user.categories.last).to have_attributes(attributes)
 
       expect(flash[:success]).to be_present
     end
