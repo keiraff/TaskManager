@@ -14,10 +14,10 @@ class SessionsController < ApplicationController
     if @user&.authenticate(params[:password])
       log_in
 
-      flash[:notice] = "Authenticated"
+      flash[:success] = "Authenticated."
       redirect_to @user
     else
-      flash[:error] = "Email or password is incorrect"
+      flash[:error] = "Email or password is incorrect."
       render "new"
     end
   end
