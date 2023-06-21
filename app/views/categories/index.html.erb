@@ -1,16 +1,16 @@
-<header class="d-flex justify-content-between">
+<header class="d-flex justify-content-between mb-2">
   <h1>Categories</h1>
   <div>
     <%= link_to "Add Category", new_category_path, class: "btn btn-primary" %>
   </div>
 </header>
 
-<div class="mb-2">
+<div class="mb-4">
   <% if @categories.empty? %>
     <br>
     <span>You don't have any categories yet.</span>
   <% else %>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush mb-2">
       <%= render @categories %>
     </ul>
     <% if @pagy.pages > 1 %>
