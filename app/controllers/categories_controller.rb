@@ -16,7 +16,7 @@ class CategoriesController < AuthenticatedController
       flash[:success] = "Category created!"
       redirect_to categories_url
     else
-      flash[:error] = "Something went wrong :("
+      flash.now[:danger] = "Something went wrong :("
       render "new"
     end
   end
