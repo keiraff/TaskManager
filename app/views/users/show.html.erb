@@ -1,7 +1,4 @@
 <h2>Welcome to the page of <%= current_user.first_name %> <%= current_user.last_name %></h2>
 
-<% if current_user %>
-  <h3>Authenticated</h3>
-<% end %>
 <br>
-<%= button_to "Log out", session_path, method: :delete %>
+<%= button_to "Log out", session_path, method: :delete, class: "btn btn-primary" %>

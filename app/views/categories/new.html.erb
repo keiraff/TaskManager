@@ -1,13 +1,14 @@
 <h1>New Category</h1>
 
-<div>
+<div class="d-inline-flex mx-auto">
   <%= form_with model: @category, url: categories_url do |f| %>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Category Name" %>
-      <%= @category.errors.messages_for(:name).join(", ") if @category.errors.any? %>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+      <small class="text-danger">
+        <%= @category.errors.messages_for(:name).join(", ") if @category.errors.any? %>
+      </small>
     </div>
-    <br>
-    <%= f.submit "Create Category" %>
+    <%= f.submit "Create Category", class: "btn btn-primary" %>
   <% end %>
 </div>

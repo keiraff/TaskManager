@@ -1,35 +1,43 @@
 <h1>Sign up</h1>
-
-<div>
+<br>
+<div class="d-inline-flex mx-auto">
   <%= form_with model: @user, url: registrations_url do |f| %>
-    <div>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, placeholder: "First Name" %>
+    <div class="mb-3">
+      <%= f.label :first_name, class: "form-label" %>
+      <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :last_name, class: "form-label" %>
+      <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+      <small class="text-danger">
+        <%= @user.errors.messages_for(:email).first %>
+      </small>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <%= f.label :password, class: "form-label" %>
+        <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+        <small class="text-danger">
+          <%= @user.errors.messages_for(:password).first %>
+        </small>
+      </div>
+      <div class="col">
+        <%= f.label :password_confirmation, class: "form-label" %>
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
+        <small class="text-danger">
+          <%= @user.errors.messages_for(:password_confirmation).first %>
+        </small>
+      </div>
+      <div class="mt-2 d-flex justify-content-end">
+        <span class="pe-2">Already have an account?</span>
+        <a class="" href="/sessions/new">Sign in</a>
+      </div>
     </div>
     <br>
-    <div>
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, placeholder: "Last Name" %>
-    </div>
-    <br>
-    <div>
-      <%= f.label :email %>
-      <%= f.text_field :email, placeholder: "Email" %>
-      <%= @user.errors.messages_for(:email).first if @user.errors.any? %>
-    </div>
-    <br>
-    <div>
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder: "Password" %>
-      <%= @user.errors.messages_for(:password).first if @user.errors.any? %>
-    </div>
-    <br>
-    <div>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-      <%= @user.errors.messages_for(:password_confirmation).first if @user.errors.any? %>
-    </div>
-    <br>
-    <%= f.submit "Create Account" %>
+    <%= f.submit "Create Account", class: "btn btn-primary" %>
   <% end %>
 </div>

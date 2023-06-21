@@ -41,7 +41,7 @@ RSpec.describe "POST /categories", type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.body).to include("New Category")
 
-      expect(flash[:error]).to be_present
+      expect(flash[:danger]).to be_present
     end
   end
 end
