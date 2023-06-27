@@ -21,6 +21,7 @@
 #
 class Category < ApplicationRecord
   belongs_to :user
+  has_many :events, dependent: :restrict_with_exception
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
 

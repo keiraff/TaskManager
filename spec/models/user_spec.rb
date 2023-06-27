@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
 
   describe "associations" do
     it { is_expected.to have_many(:categories).dependent(:restrict_with_exception) }
+    it { is_expected.to have_many(:events).dependent(:restrict_with_exception) }
   end
 
   describe "validations" do
