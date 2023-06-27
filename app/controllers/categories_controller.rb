@@ -9,6 +9,10 @@ class CategoriesController < AuthenticatedController
     @category = categories_scope.new
   end
 
+  def edit
+    @category = category
+  end
+
   def create
     @category = categories_scope.new(category_params)
 
@@ -18,6 +22,16 @@ class CategoriesController < AuthenticatedController
     else
       flash.now[:danger] = "Something went wrong :("
       render "new"
+    end
+  end
+
+  def update
+    if category.update(category_params)
+      flash[:success] = "Category updated!"
+      redirect_to categories_url
+    else
+      flash.now[:danger] = "Something went wrong :("
+      render "edit"
     end
   end
 
