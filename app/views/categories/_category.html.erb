@@ -1,1 +1,5 @@
-<li class="list-group-item"><%= category.name %></li>
+<li class="list-group-item d-flex justify-content-between"><%= category.name %>
+  <div class="ms-3">
+    <%= button_to "Delete", category_path(category), method: :delete, class: "btn btn-danger btn-sm" %>
+  </div>
+</li>

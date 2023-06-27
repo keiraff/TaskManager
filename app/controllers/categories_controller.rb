@@ -2,7 +2,7 @@
 
 class CategoriesController < AuthenticatedController
   def index
-    @pagy, @categories = pagy(categories_scope)
+    @pagy, @categories = pagy(categories_scope.order(id: :desc))
   end
 
   def new
@@ -21,7 +21,18 @@ class CategoriesController < AuthenticatedController
     end
   end
 
+  def destroy
+    category.destroy
+
+    flash[:success] = "Category deleted!"
+    redirect_to categories_url
+  end
+
   private
+
+  def category
+    @category ||= categories_scope.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
