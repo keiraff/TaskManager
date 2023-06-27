@@ -1,0 +1,14 @@
+<h1>Edit Category</h1>
+
+<div class="d-inline-flex mx-auto">
+  <%= form_with model: @category, url: category_url, method: :patch do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+      <small class="text-danger">
+        <%= @category.errors.messages_for(:name).join(", ") if @category.errors.any? %>
+      </small>
+    </div>
+    <%= f.submit "Update Category", class: "btn btn-primary" %>
+  <% end %>
+</div>
