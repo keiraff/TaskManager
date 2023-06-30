@@ -1,9 +1,21 @@
-<header>
-  <h2><%= @event.name %></h2>
+<header class="d-flex justify-content-between">
+  <div>
+    <h2><%= @event.name %></h2>
+    <span class="badge rounded-pill bg-primary bg"># <%= @event.category.name %></span>
+  </div>
+  <div class="ms-2">
+    <%= @event.date.to_formatted_s(:long_ordinal) %>
+  </div>
 </header>
-<div>
-  <div class="">
-  <%= @event.description %>
+<div class="d-flex justify-content-end text-success">
+  <% if @event.notification.present? %>
+    <span class="me-1">Notification is set on</span>
+    <%= @event.notification.to_formatted_s(:short) %>
+  <% end %>
+</div>
+<div class="mt-4">
+  <div class="text-bg-secondary">
+    <%= @event.description %>
   </div>
 
 </div>
