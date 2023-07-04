@@ -2,7 +2,9 @@
 
 class CategoriesController < AuthenticatedController
   def index
-    @pagy, @categories = pagy(categories_scope.order(id: :desc))
+    @search_result = categories_scope.ransack(params[:query])
+    @search_result.sorts = ["id desc"] if @search_result.sorts.empty?
+    @pagy, @categories = pagy(@search_result.result)
   end
 
   def new
