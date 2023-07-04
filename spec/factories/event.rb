@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :event do
     sequence(:name) { |n| "#{FFaker::Lorem.word}#{n}" }
     description { FFaker::Lorem.sentences }
-    date { FFaker::Time.datetime }
+    scheduled_at { FFaker::Time.datetime }
     notification { FFaker::Time.datetime }
   end
 end

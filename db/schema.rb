@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_29_113408) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_04_114413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -27,15 +27,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_113408) do
   create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
-    t.string "name", null: false
-    t.datetime "date", null: false
-    t.string "description"
-    t.datetime "notification"
+    t.text "name", null: false
+    t.datetime "scheduled_at", precision: nil, null: false
+    t.text "description"
+    t.datetime "notification", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "category_id"], name: "index_events_on_user_id_and_category_id"
-    t.index ["user_id", "date"], name: "index_events_on_user_id_and_date"
     t.index ["user_id", "name"], name: "index_events_on_user_id_and_name"
+    t.index ["user_id", "scheduled_at"], name: "index_events_on_user_id_and_scheduled_at"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

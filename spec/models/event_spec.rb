@@ -10,12 +10,9 @@ RSpec.describe Event, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_length_of(:name).is_at_most(100) }
 
-    it { is_expected.to validate_length_of(:description).is_at_most(1000) }
-
-    it { is_expected.to validate_presence_of(:date) }
-    it { is_expected.not_to allow_values(Time.zone.yesterday).for(:date) }
-    it { is_expected.to allow_values(Time.zone.tomorrow).for(:date) }
+    it { is_expected.to validate_presence_of(:scheduled_at) }
+    it { is_expected.not_to allow_values(Time.zone.yesterday).for(:scheduled_at) }
+    it { is_expected.to allow_values(Time.zone.tomorrow).for(:scheduled_at) }
   end
 end
