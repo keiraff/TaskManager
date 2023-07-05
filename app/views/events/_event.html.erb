@@ -3,14 +3,14 @@
     <div class="d-flex justify-content-between">
       <h4 class="card-title text-break"> <%= truncate(event.name, length: 30) %></h4>
       <div class="ms-2">
-      <%= event.date.to_formatted_s(:long_ordinal) %>
+      <%= event.starts_at.to_formatted_s(:long_ordinal) %>
       </div>
     </div>
     <div class="card-text">
       <div class="text-secondary"><small> <%= truncate(event.description, length: 200) %></small></div>
     </div>
     <div class="d-flex justify-content-end mt-auto">
-      <% if event.notification.present? %>
+      <% if event.notify_at.present? %>
         <small class="text-success">Notification is on</small>
       <% end %>
     </div>

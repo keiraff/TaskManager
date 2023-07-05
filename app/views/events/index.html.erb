@@ -9,7 +9,7 @@
       <span class="m-2">Filter by: </span>
       <div>
         <%= sort_link(@search_result, :name, 'Event Name', class: "btn btn-light me-2") %>
-        <%= sort_link(@search_result, :name, 'Date', class: "btn btn-light me-2") %>
+        <%= sort_link(@search_result, :starts_at, 'Date', class: "btn btn-light me-2") %>
         <%= link_to "Clear all", request.path, class:"btn btn-light" %>
       </div>
     </div>
@@ -23,7 +23,7 @@
     </div>
     <% if @pagy.pages > 1 %>
       <div>
-        <%== pagy_nav(@pagy) %>
+        <%== pagy_bootstrap_nav(@pagy) %>
         <%== pagy_info @pagy %>
       </div>
     <% end %>
