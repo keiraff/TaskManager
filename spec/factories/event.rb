@@ -8,7 +8,7 @@ FactoryBot.define do
     starts_at { FFaker::Time.datetime }
     notify_at { FFaker::Time.datetime }
 
-    trait :not_all_day_event do
+    trait :not_all_day do
       all_day { false }
       ends_at { FFaker::Time.between(starts_at, starts_at + 2.days) }
     end
