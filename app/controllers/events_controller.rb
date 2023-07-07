@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class EventsController < AuthenticatedController
-
   def index
     @search_result = events_scope.ransack(params[:query])
-    @search_result.sorts = ["date asc"] if @search_result.sorts.empty?
+    @search_result.sorts = ["starts_at asc"] if @search_result.sorts.empty?
     @pagy, @events = pagy(@search_result.result.includes(:category))
   end
 
