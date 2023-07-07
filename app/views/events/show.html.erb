@@ -1,10 +1,19 @@
 <header class="d-flex justify-content-between">
   <div>
-    <h2><%= @event.name %></h2>
-    <span class="badge rounded-pill bg-primary bg"># <%= @event.category.name %></span>
+    <div class="d-flex">
+      <h2><%= @event.name %></h2>
+      <% if @event.all_day %>
+        <span class="ms-1 h-25 badge bg-secondary">All day</span>
+      <% end %>
+    </div>
+    <span class="badge rounded-pill bg-primary"># <%= @event.category.name %></span>
   </div>
   <div class="ms-2">
-    <%= @event.starts_at.to_formatted_s(:long_ordinal) %>
+    <% if @event.all_day %>
+      <%= @event.starts_at.to_date.to_formatted_s(:long_ordinal) %>
+    <% else %>
+      <p><%= @event.starts_at.to_formatted_s(:long) %> - <%= @event.ends_at.to_formatted_s(:long) %></p>
+    <% end %>
   </div>
 </header>
 <div class="d-flex justify-content-end text-success">

@@ -1,9 +1,21 @@
 <div class="card mb-3 me-2" style="width: 47%">
   <div class="card-body d-flex flex-column">
     <div class="d-flex justify-content-between">
-      <h4 class="card-title text-break"> <%= truncate(event.name, length: 30) %></h4>
+      <div class="d-flex">
+        <h4 class="card-title text-break"> <%= truncate(event.name, length: 30) %></h4>
+        <% if event.all_day %>
+          <div>
+          <small class="ms-1 rounded-pill badge bg-secondary">All day</small>
+          </div>
+        <% end %>
+      </div>
       <div class="ms-2">
-      <%= event.starts_at.to_formatted_s(:long_ordinal) %>
+        <% if event.all_day %>
+          <%= event.starts_at.to_date.to_formatted_s(:long_ordinal) %>
+        <% else %>
+          <span><span class="text-secondary small">from: </span><%= event.starts_at.to_formatted_s(:long) %></span>
+          <p><span class="text-secondary small me-3">to: </span><%= event.ends_at.to_formatted_s(:long) %></p>
+        <% end %>
       </div>
     </div>
     <div class="card-text">
