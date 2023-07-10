@@ -7,6 +7,7 @@ ruby "3.1.3"
 
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "draper"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pagy"
