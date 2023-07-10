@@ -9,22 +9,14 @@
     <span class="badge rounded-pill bg-primary"># <%= @event.category.name %></span>
   </div>
   <div class="ms-2">
-    <% if @event.all_day %>
-      <%= @event.starts_at.to_date.to_formatted_s(:long_ordinal) %>
-    <% else %>
-      <p><%= @event.starts_at.to_formatted_s(:long) %> - <%= @event.ends_at.to_formatted_s(:long) %></p>
-    <% end %>
+    <%= @event.decorated_time_interval %>
   </div>
 </header>
 <div class="d-flex justify-content-end text-success">
-  <% if @event.notify_at.present? %>
-    <span class="me-1">Notification is set on</span>
-    <%= @event.notify_at.to_formatted_s(:short) %>
-  <% end %>
+  <span><%= @event.decorated_notify_at %></span>
 </div>
 <div class="mt-4">
   <div class="text-bg-secondary">
     <%= @event.description %>
   </div>
-
 </div>

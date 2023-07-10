@@ -4,11 +4,11 @@ class EventsController < AuthenticatedController
   def index
     @search_result = events_scope.ransack(params[:query])
     @search_result.sorts = ["starts_at asc"] if @search_result.sorts.empty?
-    @pagy, @events = pagy(@search_result.result.includes(:category))
+    @pagy, @events = pagy(@search_result.result)
   end
 
   def show
-    @event = event
+    event
   end
 
   private
