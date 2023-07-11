@@ -1,7 +1,7 @@
-<li class="list-group-item d-flex justify-content-between"><%= category.name %>
-  <div class="d-flex justify-content-end">
+<li class="list-group-item d-flex justify-content-between text-break"><%= category.truncated_name %>
+  <div class="d-flex justify-content-end" style="min-width: 150px">
     <div>
-    <%= link_to "Edit", edit_category_path(category), class: "btn btn-secondary btn-sm ms-3" %>
+      <%= link_to "Edit", edit_category_path(category), class: "btn btn-secondary btn-sm ms-3" %>
     </div>
     <%= button_to "Delete", category_path(category), method: :delete, class: "btn btn-danger btn-sm ms-3" %>
   </div>
