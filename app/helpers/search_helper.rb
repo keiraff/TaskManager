@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module SearchResultsHelper
-  def category_options
+module SearchHelper
+  def category_options_for_select
     options = current_user.categories.order(:name).map do |category|
       [category.truncated_name, category.id]
     end
