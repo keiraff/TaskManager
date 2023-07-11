@@ -5,6 +5,6 @@
   </div>
   <div class="input-group d-flex mt-3">
     <%= f.label :category_id_eq, "Category:", class: "input-group-text" %>
-    <%= f.select :category_id_eq, options_for_select(current_user.categories.order(:name).map { |category| [category.truncated_name, category.id] }, params[:query] ? { :selected => params[:query]["category_id_eq"] } : { :selected => "" }), { include_blank: true }, { class: "form-select" } %>
+    <%= f.select :category_id_eq, category_options, { include_blank: true }, { class: "form-select" } %>
   </div>
 <% end %>
