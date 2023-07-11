@@ -3,9 +3,9 @@
 FactoryBot.define do
   factory :event do
     sequence(:name) { |n| "#{FFaker::Lorem.word}#{n}" }
-    description { FFaker::Lorem.sentences }
+    description { FFaker::Lorem.sentence }
     all_day { true }
-    starts_at { FFaker::Time.datetime }
+    starts_at { Time.current }
     notify_at { FFaker::Time.datetime }
 
     trait :not_all_day do
