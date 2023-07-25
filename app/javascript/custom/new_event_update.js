@@ -1,24 +1,3 @@
-// $(function () {
-//
-//     //show it when the checkbox is clicked
-//     $('input[type="checkbox"][id="event_all_day"]').on('change', function () {
-//         if ($(this).prop('checked')) {
-//             $('div[id="endsAtTime"]').hide();
-//         } else {
-//             $('div[id="endsAtTime"]').fadeIn();
-//         }
-//     });
-//
-//     $('div[id="notificationTime"]').hide();
-//
-//     $('input[type="checkbox"][id="notifyAtCheckbox"]').on('change', function () {
-//         if ($(this).prop('checked')) {
-//             $('div[id="notificationTime"]').fadeIn();
-//         } else {
-//             $('div[id="notificationTime"]').hide();
-//         }
-//     });
-// });
 
 $(function () {
 
