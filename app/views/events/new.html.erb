@@ -1,7 +1,7 @@
 <h1>New Event</h1>
 
 <div class="mt-4">
-  <%= form_with model: @event, url: events_url do |f| %>
+  <%= form_with model: @event, url: events_url, id: "events_new_form" do |f| %>
     <div class="row mb-3">
       <div class="col">
         <div class="mb-3">
@@ -31,7 +31,7 @@
       <div class="col">
         <div class="mb-3 d-flex">
           <div>
-            <%= f.check_box :all_day, checked: false, class: "form-check-input me-2" %>
+            <%= f.check_box :all_day, checked: true, class: "form-check-input me-2", id: "all_day_checkbox" %>
           </div>
           <%= f.label :all_day, "All-day", class: "form-check-label" %>
         </div>
@@ -42,7 +42,7 @@
             <%= @event.errors.messages_for(:starts_at).join(", ") if @event.errors.any? %>
           </small>
         </div>
-        <div class="mb-3" id="endsAtTime">
+        <div class="mb-3" id="ends_at_time">
           <%= f.label :ends_at, class: "form-label me-2" %>
           <%= f.datetime_select :ends_at, { :include_blank => true, :default => nil, class: "form-control" } %>
           <small class="text-danger">
@@ -51,15 +51,15 @@
         </div>
         <div class="mb-3 d-flex">
           <div>
-            <%= f.check_box :notify_at_checkbox, checked: false, class: "form-check-input me-2" %>
+            <%= f.check_box :notify_at_checkbox, checked: false, class: "form-check-input me-2", id: "notify_at_checkbox" %>
           </div>
           <%= f.label :notify_at_checkbox, "Set a notification", class: "form-check-label" %>
         </div>
-        <div class="mb-3" id="notificationTime">
+        <div class="mb-3" id="notification_time">
           <%= f.label :notify_at, class: "form-label" %>
           <%= f.datetime_select :notify_at, { :include_blank => true, :default => nil, class: "form-control" } %>
           <small class="text-danger">
-            <%= @event.errors.messages_for(:notify_at_at).join(", ") if @event.errors.any? %>
+            <%= @event.errors.messages_for(:notify_at).join(", ") if @event.errors.any? %>
           </small>
         </div>
       </div>
