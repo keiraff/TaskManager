@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "DELETE sessions/:id", type: :request do
-  context "when logged out" do
+  context "when user authenticated" do
     let(:user) { create(:user) }
 
     before do
@@ -17,4 +17,6 @@ RSpec.describe "DELETE sessions/:id", type: :request do
       expect(cookies[:user_id]).to be_blank
     end
   end
+
+  it_behaves_like "unauthenticated user request", :delete, "/sessions/1"
 end
