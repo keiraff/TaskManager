@@ -11,7 +11,27 @@ class EventsController < AuthenticatedController
     event
   end
 
+  def new
+    @event = events_scope.new
+  end
+
+  def create
+    @event = events_scope.new(event_params)
+
+    if @event.save
+      flash[:success] = "Event created!"
+      redirect_to events_url
+    else
+      flash.now[:danger] = "Something went wrong :("
+      render "new"
+    end
+  end
+
   private
+
+  def event_params
+    params.require(:event).permit(:name, :description, :all_day, :starts_at, :ends_at, :notify_at, :category_id)
+  end
 
   def event
     @event ||= events_scope.find(params[:id])
