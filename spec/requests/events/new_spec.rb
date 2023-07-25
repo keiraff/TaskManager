@@ -17,5 +17,5 @@ RSpec.describe "GET /events/new", type: :request do
     end
   end
 
-  it_behaves_like "unauthenticated user request", :get, "/categories/new"
+  it_behaves_like "unauthenticated user request", :get, "/events/new"
 end
