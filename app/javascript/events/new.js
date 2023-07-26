@@ -1,7 +1,9 @@
 $(document).ready(function() {
     if(!$('#events_new_form')) return;
 
-    $('#ends_at_time select').prop('disabled', true);
+    if($("#all_day_checkbox[type='checkbox']").prop('checked')) {
+        $('#ends_at_time select').prop('disabled', true);
+    }
 
     // Disable ends_at selects when all_day checkbox is clicked
     $("#all_day_checkbox[type='checkbox']").on('change', function() {
@@ -12,7 +14,9 @@ $(document).ready(function() {
         }
     });
 
-    $('#notification_time select').prop('disabled', true);
+    if($("#notify_at_checkbox[type='checkbox']").prop('checked')) {
+        $('#notification_time select').prop('disabled', false);
+    }
 
     // Enable notify_at selects when notification checkbox is clicked
     $("#notify_at_checkbox[type='checkbox']").on('change', function() {

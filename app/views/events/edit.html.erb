@@ -1,7 +1,7 @@
-<h1>New Event</h1>
+<h1>Edit Event</h1>
 
 <div class="mt-4">
-  <%= form_with model: @event, url: events_url, id: "events_new_form" do |f| %>
+  <%= form_with model: @event, id: "events_new_form", method: :patch do |f| %>
     <div class="row mb-3">
       <div class="col">
         <div class="mb-3">
@@ -51,7 +51,7 @@
         </div>
         <div class="mb-3 d-flex">
           <div>
-            <%= f.check_box :notify_at_checkbox, checked: false, class: "form-check-input me-2", id: "notify_at_checkbox" %>
+            <%= f.check_box :notify_at_checkbox, checked: @event.notify_at?, class: "form-check-input me-2", id: "notify_at_checkbox" %>
           </div>
           <%= f.label :notify_at_checkbox, "Set a notification", class: "form-check-label" %>
         </div>
@@ -64,6 +64,6 @@
         </div>
       </div>
     </div>
-    <%= f.submit "Create Event", class: "btn btn-primary" %>
+    <%= f.submit "Update Event", class: "btn btn-primary" %>
   <% end %>
 </div>
