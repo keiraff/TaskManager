@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    if(!$('#events_new_form')) return;
+    if(!($('#events_new_form')||$('#events_edit_form'))) return;
 
     if($("#all_day_checkbox[type='checkbox']").prop('checked')) {
         $('#ends_at_time select').prop('disabled', true);
@@ -16,6 +16,9 @@ $(document).ready(function() {
 
     if($("#notify_at_checkbox[type='checkbox']").prop('checked')) {
         $('#notification_time select').prop('disabled', false);
+    }
+    else {
+        $('#notification_time select').prop('disabled', true);
     }
 
     // Enable notify_at selects when notification checkbox is clicked
