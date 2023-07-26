@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class EventsController < AuthenticatedController
+  rescue_from Pundit::NotAuthorizedError, with: :event_is_expired
+
   def index
     @search_result = events_scope.ransack(params[:query])
     @search_result.sorts = ["starts_at asc"] if @search_result.sorts.empty?
@@ -15,6 +17,10 @@ class EventsController < AuthenticatedController
     @event = events_scope.new
   end
 
+  def edit
+    authorize event
+  end
+
   def create
     @event = events_scope.new(event_params)
 
@@ -24,6 +30,18 @@ class EventsController < AuthenticatedController
     else
       flash.now[:danger] = "Something went wrong :("
       render "new"
+    end
+  end
+
+  def update
+    redirect_to events_url unless authorize event
+
+    if event.update(event_params)
+      flash[:success] = "Event updated!"
+      redirect_to @event
+    else
+      flash.now[:danger] = "Something went wrong :("
+      render "edit"
     end
   end
 
@@ -39,5 +57,10 @@ class EventsController < AuthenticatedController
 
   def events_scope
     current_user.events
+  end
+
+  def event_is_expired
+    flash[:danger] = "Something went wrong :("
+    redirect_to(request.referer || events_url)
   end
 end
