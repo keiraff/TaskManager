@@ -1,10 +1,11 @@
-<% if policy(@event).update? %>
-  <div class="d-flex justify-content-end mb-4">
+<div class="d-flex justify-content-end mb-4">
+  <% if policy(@event).update? %>
     <div>
-      <%= link_to "Edit", edit_event_path(@event), class: "btn btn-secondary" %>
+      <%= link_to "Edit", edit_event_path(@event), class: "btn btn-secondary btn-sm" %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  <%= button_to "Delete", event_path(@event), method: :delete, class: "btn btn-danger btn-sm ms-3" %>
+</div>
 <header class="d-flex justify-content-between">
   <div>
     <div class="text-break">

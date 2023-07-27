@@ -43,6 +43,13 @@ class EventsController < AuthenticatedController
     end
   end
 
+  def destroy
+    event.destroy
+
+    flash[:success] = "Event deleted!"
+    redirect_to events_url
+  end
+
   private
 
   def event_params
