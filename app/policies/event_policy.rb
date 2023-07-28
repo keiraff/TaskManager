@@ -9,6 +9,6 @@ class EventPolicy < ApplicationPolicy
   private
 
   def happened?
-    record.starts_at < Time.current
+    record.starts_at <= Time.current
   end
 end
