@@ -44,7 +44,7 @@
         </div>
         <div class="mb-3" id="ends_at_time">
           <%= f.label :ends_at, class: "form-label me-2" %>
-          <%= f.datetime_select :ends_at, { :include_blank => true, :default => nil, class: "form-control", start_year: Date.current.year } %>
+          <%= f.datetime_select :ends_at, { :include_blank => true, class: "form-control", start_year: Date.current.year } %>
           <small class="text-danger">
             <%= @event.errors.messages_for(:ends_at).join(", ") if @event.errors.any? %>
           </small>
@@ -61,7 +61,7 @@
         </div>
         <div class="mb-3" id="notification_time">
           <%= f.label :notify_at, class: "form-label" %>
-          <%= f.datetime_select :notify_at, { :include_blank => true, :default => nil, class: "form-control", start_year: Date.current.year } %>
+          <%= f.datetime_select :notify_at, { :include_blank => true, class: "form-control", start_year: Date.current.year } %>
           <small class="text-danger">
             <%= @event.errors.messages_for(:notify_at).join(", ") if @event.errors.any? %>
           </small>
