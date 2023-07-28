@@ -26,7 +26,7 @@
   <div>
     <span class="badge rounded-pill bg-primary"><%= @event.decorated_category_tag %></span>
     <% unless policy(@event).update? %>
-      <span class="badge rounded-pill bg-secondary">Expired</span>
+      <span class="badge rounded-pill bg-secondary">Outdated</span>
     <% end %>
   </div>
   <div>

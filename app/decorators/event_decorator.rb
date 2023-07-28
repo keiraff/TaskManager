@@ -36,6 +36,6 @@ module EventDecorator
   end
 
   def decorated_category_tag
-    "# #{category.name}"
+    "##{category.name}"
   end
 end
