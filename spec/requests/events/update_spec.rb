@@ -33,7 +33,7 @@ RSpec.describe "PATCH /events/:id", type: :request do
         expect(response).to redirect_to "/events/#{event.id}"
 
         expect(user.events.last).to have_attributes(attributes.except(:starts_at))
-        expect(user.events.last.starts_at.utc).to be_within(1.second).of 1.day.from_now
+        expect(user.events.last.starts_at.to_s).to eq(attributes[:starts_at].to_s)
 
         expect(flash[:success]).to be_present
       end
@@ -69,6 +69,8 @@ RSpec.describe "PATCH /events/:id", type: :request do
 
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to "/events"
+
+        expect(flash[:danger]).to match(/Editing past events isn't allowed./)
       end
     end
   end

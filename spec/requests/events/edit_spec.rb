@@ -31,6 +31,8 @@ RSpec.describe "GET /events/:id/edit", type: :request do
 
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to "/events"
+
+        expect(flash[:danger]).to match(/Editing past events isn't allowed./)
       end
     end
   end
