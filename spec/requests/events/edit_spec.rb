@@ -11,7 +11,7 @@ RSpec.describe "GET /events/:id/edit", type: :request do
       category
     end
 
-    context "when event is not expired" do
+    context "when future event" do
       let(:event) { create(:event, user: user, category: category) }
 
       it "returns success responce" do
@@ -23,7 +23,7 @@ RSpec.describe "GET /events/:id/edit", type: :request do
       end
     end
 
-    context "when event is expired" do
+    context "when past event" do
       let(:event) { create(:event, starts_at: Time.current, user: user, category: category) }
 
       it "redirects to events page" do

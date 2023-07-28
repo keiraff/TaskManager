@@ -61,7 +61,7 @@ RSpec.describe "PATCH /events/:id", type: :request do
       end
     end
 
-    context "when event is expired" do
+    context "when past event" do
       let(:event) { create(:event, starts_at: Time.current, user: user, category: category) }
 
       it "redirects to events page" do

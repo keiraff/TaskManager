@@ -2,12 +2,12 @@
 
 class EventPolicy < ApplicationPolicy
   def update?
-    !expired?
+    !happened?
   end
 
   private
 
-  def expired?
+  def happened?
     record.starts_at < Time.current
   end
 end
