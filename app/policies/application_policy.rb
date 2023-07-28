@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :record, :error_message
 
-  def initialize(user, record)
+  def initialize(user, record, error_message: "You do not have permissions to perform this action.")
     @user = user
     @record = record
+    @error_message = error_message
   end
 
   def index?
@@ -35,6 +36,10 @@ class ApplicationPolicy
   def destroy?
     false
   end
+
+  private
+
+  attr_writer :error_message
 
   class Scope
     def initialize(user, scope)

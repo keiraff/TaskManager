@@ -6,8 +6,8 @@ class AuthenticatedController < ApplicationController
 
   before_action :authenticate_user
 
-  rescue_from Pundit::NotAuthorizedError do
-    flash[:danger] = "Editing past events isn't allowed."
+  rescue_from Pundit::NotAuthorizedError do |error|
+    flash[:danger] = error.policy.error_message
     redirect_to(request.referer || events_url)
   end
 end

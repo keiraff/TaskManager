@@ -2,6 +2,7 @@
 
 class EventPolicy < ApplicationPolicy
   def update?
+    self.error_message = "Editing past events isn't allowed."
     !happened?
   end
 
