@@ -15,6 +15,10 @@ class EventsController < AuthenticatedController
     @event = events_scope.new
   end
 
+  def edit
+    authorize event
+  end
+
   def create
     @event = events_scope.new(event_params)
 
@@ -24,6 +28,18 @@ class EventsController < AuthenticatedController
     else
       flash.now[:danger] = "Something went wrong :("
       render "new"
+    end
+  end
+
+  def update
+    redirect_to events_url unless authorize event
+
+    if event.update(event_params)
+      flash[:success] = "Event updated!"
+      redirect_to @event
+    else
+      flash.now[:danger] = "Something went wrong :("
+      render "edit"
     end
   end
 

@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:name) { |n| "#{FFaker::Lorem.word}#{n}" }
     description { FFaker::Lorem.sentence }
     all_day { true }
-    starts_at { Time.current }
+    starts_at { 1.day.from_now }
     notify_at { FFaker::Time.datetime }
 
     trait :not_all_day do

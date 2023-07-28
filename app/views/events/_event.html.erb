@@ -5,7 +5,12 @@
         <h4 class="card-title text-break"> <%= event.truncated_name %></h4>
         <% if event.all_day %>
           <div>
-          <small class="ms-1 rounded-pill badge bg-secondary">All day</small>
+            <small class="ms-1 rounded-pill badge bg-info">All day</small>
+          </div>
+        <% end %>
+        <% unless policy(event).update? %>
+          <div>
+            <span class="badge rounded-pill bg-secondary ms-1">Outdated</span>
           </div>
         <% end %>
       </div>

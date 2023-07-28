@@ -34,4 +34,8 @@ module EventDecorator
   def truncated_description
     truncate(description, length: 200)
   end
+
+  def decorated_category_tag
+    "##{category.name}"
+  end
 end
