@@ -24,7 +24,9 @@ RSpec.describe "GET /events/:id/edit", type: :request do
     end
 
     context "when past event" do
-      let(:event) { create(:event, starts_at: Time.current, user: user, category: category) }
+      let(:event) do
+        create(:event, all_day: false, starts_at: Time.current, ends_at: Time.current, user: user, category: category)
+      end
 
       it "redirects to events page" do
         get "/events/#{event.id}/edit"

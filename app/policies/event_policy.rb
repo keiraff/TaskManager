@@ -9,6 +9,10 @@ class EventPolicy < ApplicationPolicy
   private
 
   def happened?
-    record.starts_at <= Time.current
+    if record.all_day?
+      record.starts_at.to_date < Time.zone.today
+    else
+      record.ends_at <= Time.current
+    end
   end
 end
