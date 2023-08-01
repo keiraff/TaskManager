@@ -10,9 +10,9 @@ $(document).ready(function() {
         $("#all_day_checkbox[type='checkbox']").on('change', function() {
             if($(this).prop('checked')) {
                 $('#ends_at_time select').val(null);
-                // Set starts_at time selects to 00:00
-                $('#event_starts_at_4i').val("00");
-                $('#event_starts_at_5i').val("00");
+                // Set starts_at time selects to 23:59
+                $('#event_starts_at_4i').val("23");
+                $('#event_starts_at_5i').val("59");
                 $('#ends_at_time').hide();
             } else {
                 $('#ends_at_time').show();

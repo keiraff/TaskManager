@@ -24,6 +24,9 @@
                 </ul>
               </li>
             </ul>
+            <div>
+              <%= link_to "Add Event", new_event_path, class: "btn btn-outline-light" %>
+            </div>
           </div>
         <% else %>
           <div><%= link_to "Log in", new_session_path, class: "btn btn-outline-light" %></div>
