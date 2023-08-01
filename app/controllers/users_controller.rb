@@ -11,10 +11,4 @@ class UsersController < AuthenticatedController
                                                              page_param: :today_all_day_events_page)
     @pagy_current_events, @current_events = pagy(result.value[:current_events], page_param: :current_events_page)
   end
-
-  private
-
-  def events_scope
-    current_user.events
-  end
 end
