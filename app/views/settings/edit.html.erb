@@ -1,0 +1,10 @@
+<%= form_with model: @user, url: setting_url, method: :patch do |f| %>
+  <div>
+    <%= f.label :time_zone, "Select your time zone", class: "form-label" %>
+    <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.all, {}, { class: "form-select" }) %>
+    <small class="text-danger">
+      <%= @user.errors.messages_for(:time_zone).join(", ") if @user.errors.any? %>
+    </small>
+  </div>
+  <%= f.submit "Update time zone", class: "btn btn-primary mt-3" %>
+<% end %>

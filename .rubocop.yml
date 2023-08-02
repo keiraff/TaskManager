@@ -61,3 +61,6 @@ RSpec/MultipleExpectations:
 
 RSpec/MultipleMemoizedHelpers:
   Max: 10
+
+Rails/SkipsModelValidations:
+  AllowedMethods: [update_attribute]
