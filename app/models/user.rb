@@ -9,6 +9,7 @@
 #  first_name      :string
 #  last_name       :string
 #  password_digest :string           not null
+#  time_zone       :string           default("UTC")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -24,4 +25,5 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: /\A.+@.+\..+\z/
   validates :password, confirmation: true, length: { minimum: 6 }
+  validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "Time zone is invalid." }
 end
