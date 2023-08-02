@@ -6,8 +6,7 @@ class SettingsController < AuthenticatedController
   end
 
   def update
-    if time_zone_valid?
-      user.update_attribute(:time_zone, settings_params[:time_zone])
+    if user.update(settings_params)
       flash[:success] = "Time zone is updated!"
       redirect_to current_user
     else
@@ -20,12 +19,6 @@ class SettingsController < AuthenticatedController
 
   def user
     @user = current_user
-  end
-
-  def time_zone_valid?
-    user.time_zone = settings_params[:time_zone]
-    user.valid?
-    user.errors[:time_zone].blank?
   end
 
   def settings_params
