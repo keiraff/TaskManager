@@ -1,4 +1,20 @@
-<h2>Welcome to the page of <%= current_user.first_name %> <%= current_user.last_name %></h2>
-
-<br>
-<%= button_to "Log out", session_path, method: :delete, class: "btn btn-primary" %>
+<div id="users_show">
+  <header class="d-flex justify-content-between">
+    <h2 class="mb-4">Welcome to the page of <%= current_user.first_name %> <%= current_user.last_name %></h2>
+    <div style="min-width: 67px">
+      <%= button_to "Log out", session_path, method: :delete, class: "btn btn-primary btn-sm" %>
+    </div>
+  </header>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="today_events_tab" href="#today_events">Today Events</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="current_events_tab" href="#current_events">Current Events</a>
+    </li>
+  </ul>
+  <div class="tab-content mt-3">
+    <%= render "users/today_all_day_events" %>
+    <%= render "users/current_events" %>
+  </div>
+</div>

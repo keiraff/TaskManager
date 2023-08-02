@@ -1,0 +1,18 @@
+<div class="tab-pane" id="today_events" role="tabpanel">
+  <div>
+    <% if @today_all_day_events.empty? %>
+      <span class="mt-4">You don't have any events today.</span>
+    <% else %>
+      <h3>Today events - <%= @today_all_day_events_count %></h3>
+      <div class="mb-2 d-flex flex-wrap">
+        <%= render @today_all_day_events %>
+      </div>
+      <% if @pagy_today_all_day_events.pages > 1 %>
+        <div>
+          <%== pagy_bootstrap_nav(@pagy_today_all_day_events) %>
+          <%== pagy_info @pagy_today_all_day_events %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
