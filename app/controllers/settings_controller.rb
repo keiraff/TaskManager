@@ -24,7 +24,7 @@ class SettingsController < AuthenticatedController
 
   def time_zone_valid?
     user.time_zone = settings_params[:time_zone]
-    user.valid?(:time_zone)
+    user.valid?
     user.errors[:time_zone].blank?
   end
 
