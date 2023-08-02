@@ -6,5 +6,6 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     sequence(:email) { |n| "#{first_name}#{n}@example.com" }
     password { FFaker::Internet.password }
+    time_zone { "UTC" }
   end
 end

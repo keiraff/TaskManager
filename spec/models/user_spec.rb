@@ -18,5 +18,10 @@ RSpec.describe User, type: :model do
 
     it { is_expected.to validate_confirmation_of(:password) }
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
+
+    it {
+      is_expected.to validate_inclusion_of(:time_zone).in_array(ActiveSupport::TimeZone.all.map(&:name))
+                                                      .with_message("Time zone is invalid.")
+    }
   end
 end
