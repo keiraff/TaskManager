@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class EventsController < AuthenticatedController
+  include EventsTimeZone
+  around_action :set_time_zone, only: [:new, :create, :edit, :update]
+
   def index
     @search_result = events_scope.ransack(params[:query])
     @search_result.sorts = ["starts_at asc"] if @search_result.sorts.empty?

@@ -32,10 +32,4 @@ module Authentication
   def redirect_to_user_page
     redirect_to current_user if logged_in?
   end
-
-  private
-
-  def set_time_zone(&)
-    Time.use_zone(current_user.time_zone, &)
-  end
 end

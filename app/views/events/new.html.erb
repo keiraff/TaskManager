@@ -37,7 +37,7 @@
         </div>
         <div class="mb-3">
           <%= f.label :starts_at, class: "form-label" %>
-          <%= f.datetime_select :starts_at, { :include_blank => true, selected: Time.current, class: "form-control", start_year: Date.current.year } %>
+          <%= f.datetime_select :starts_at, { :include_blank => true, selected: 1.minute.from_now, class: "form-control", start_year: Date.current.year } %>
           <small class="text-danger">
             <%= @event.errors.messages_for(:starts_at).join(", ") if @event.errors.any? %>
           </small>

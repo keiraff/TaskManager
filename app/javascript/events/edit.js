@@ -25,7 +25,7 @@ $(document).ready(function() {
         // Hide notify_at selects when notification checkbox is not clicked
         $("#notify_at_checkbox[type='checkbox']").on('change', function() {
             if($(this).prop('checked')) {
-                $('#notification_time select').show();
+                $('#notification_time').show();
             } else {
                 $('#notification_time select option').removeAttr('selected');
                 $('#notification_time select').val("");
