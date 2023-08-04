@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class EventsController < AuthenticatedController
-  include EventsTimeZone
-  around_action :set_time_zone, only: [:new, :create, :edit, :update]
-
   def index
     @search_result = events_scope.ransack(params[:query])
     @search_result.sorts = ["starts_at asc"] if @search_result.sorts.empty?
@@ -23,9 +20,10 @@ class EventsController < AuthenticatedController
   end
 
   def create
-    @event = events_scope.new(event_params)
+    result = Events::Create.call(current_user, event_params)
 
-    if @event.save
+    @event = result.value
+    if result.success?
       flash[:success] = "Event created!"
       redirect_to events_url
     else
@@ -35,9 +33,12 @@ class EventsController < AuthenticatedController
   end
 
   def update
-    redirect_to events_url unless authorize event
+    authorize event
 
-    if event.update(event_params)
+    result = Events::Update.call(current_user, event, event_params)
+
+    @event = result.event
+    if result.success?
       flash[:success] = "Event updated!"
       redirect_to @event
     else

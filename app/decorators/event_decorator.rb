@@ -39,6 +39,26 @@ module EventDecorator
     "##{category.name}"
   end
 
+  def starts_at_for_new_page
+    current_time_zone(1.minute.from_now)
+  end
+
+  def starts_at_for_edit_page
+    current_time_zone(starts_at)
+  end
+
+  def ends_at_for_edit_page
+    all_day? ? nil : current_time_zone(ends_at)
+  end
+
+  def notify_at_for_edit_page
+    notify_at.present? ? current_time_zone(notify_at) : nil
+  end
+
+  def decorated_start_year
+    current_time_zone(Date.current).year
+  end
+
   private
 
   def current_time_zone(time)
