@@ -20,24 +20,36 @@ RSpec.describe User, type: :model do
       is_expected.to validate_inclusion_of(:time_zone).in_array(ActiveSupport::TimeZone.all.map(&:name))
                                                       .with_message("Time zone is invalid.")
     }
+  end
 
-    context "when create record" do
+  describe "password validations" do
+    context "when user create" do
+      subject { build(:user) }
+
       it { is_expected.to validate_confirmation_of(:password) }
       it { is_expected.to validate_length_of(:password).is_at_least(6) }
     end
 
-    context "when update record" do
-      subject(:user) { described_class.last }
+    context "when user update" do
+      context "with password" do
+        subject(:user) { create(:user) }
 
-      let(:created_user) { create(:user) }
+        before do
+          user.password = "12345"
+          user.valid?
+        end
 
-      before do
-        created_user
+        it { expect(user.errors["password"]).to include("is too short (minimum is 6 characters)") }
       end
 
-      it { expect(user.id).to equal(created_user.id) }
-      it { expect(user.password).to be_nil }
-      it { is_expected.to be_valid }
+      context "without password" do
+        subject(:user) { described_class.find(create(:user).id) }
+
+        it "skips password length validation" do
+          expect(user.password).to be_nil
+          is_expected.to be_valid
+        end
+      end
     end
   end
 end
