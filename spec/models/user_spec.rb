@@ -16,12 +16,28 @@ RSpec.describe User, type: :model do
     it { is_expected.not_to allow_values("@", "2@com", "@mail.com", "gmail").for(:email) }
     it { is_expected.to allow_values("foo@gmail.com").for(:email) }
 
-    it { is_expected.to validate_confirmation_of(:password) }
-    it { is_expected.to validate_length_of(:password).is_at_least(6) }
-
     it {
       is_expected.to validate_inclusion_of(:time_zone).in_array(ActiveSupport::TimeZone.all.map(&:name))
                                                       .with_message("Time zone is invalid.")
     }
+
+    context "when create record" do
+      it { is_expected.to validate_confirmation_of(:password) }
+      it { is_expected.to validate_length_of(:password).is_at_least(6) }
+    end
+
+    context "when update record" do
+      subject(:user) { described_class.last }
+
+      let(:created_user) { create(:user) }
+
+      before do
+        created_user
+      end
+
+      it { expect(user.id).to equal(created_user.id) }
+      it { expect(user.password).to be_nil }
+      it { is_expected.to be_valid }
+    end
   end
 end

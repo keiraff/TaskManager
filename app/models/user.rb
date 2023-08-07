@@ -9,7 +9,7 @@
 #  first_name      :string
 #  last_name       :string
 #  password_digest :string           not null
-#  time_zone       :string           default("UTC")
+#  time_zone       :string           default("UTC"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
