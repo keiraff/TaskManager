@@ -20,11 +20,12 @@ class EventsController < AuthenticatedController
   end
 
   def create
-    @event = events_scope.new(event_params)
+    result = Events::Create.call(current_user, event_params)
 
-    if @event.save
+    @event = result.value
+    if result.success?
       flash[:success] = "Event created!"
-      redirect_to events_url
+      redirect_to @event
     else
       flash.now[:danger] = "Something went wrong :("
       render "new"
@@ -32,9 +33,12 @@ class EventsController < AuthenticatedController
   end
 
   def update
-    redirect_to events_url unless authorize event
+    authorize event
 
-    if event.update(event_params)
+    result = Events::Update.call(current_user, event, event_params)
+
+    @event = result.value
+    if result.success?
       flash[:success] = "Event updated!"
       redirect_to @event
     else

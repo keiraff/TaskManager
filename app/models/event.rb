@@ -34,8 +34,12 @@ class Event < ApplicationRecord
 
   validates :name, presence: true
   validates :all_day, inclusion: { in: [true, false] }
-  validates :starts_at, presence: true, comparison: { greater_than_or_equal_to: Time.current }
-  validates :ends_at, presence: true, unless: :all_day?, comparison: { greater_than: :starts_at }
+  validates :starts_at, presence: true,
+                        comparison: {
+                          greater_than_or_equal_to: Time.current, message: "must be greater or equal to current time"
+                        }
+  validates :ends_at, presence: true, unless: :all_day?,
+                      comparison: { greater_than: :starts_at, message: "must be greater than starts at" }
   validates :ends_at, absence: true, if: :all_day?
 
   def self.ransackable_attributes(_auth_object = nil)

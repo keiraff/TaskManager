@@ -43,8 +43,7 @@ RSpec.describe "PATCH /events/:id", type: :request do
       let(:attributes) do
         {
           name: nil,
-          all_day: nil,
-          starts_at: nil,
+          starts_at: 1.day.ago,
           category_id: nil,
         }
       end
