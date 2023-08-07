@@ -11,14 +11,12 @@ module Events
     end
 
     def call
-      self.event = event_with_assigned_attributes
+      self.value = event_with_assigned_attributes
 
       event.save ? success(event) : failure(event.errors.full_messages)
     end
 
     private
-
-    attr_writer :event
 
     def utc_time_from_user_zone(user_time)
       return if user_time.blank?

@@ -2,7 +2,7 @@
 
 module Events
   class Create < ApplicationService
-    attr_reader :user, :params, :value
+    attr_reader :user, :params
 
     def initialize(user, params = {})
       @user = user
@@ -16,8 +16,6 @@ module Events
     end
 
     private
-
-    attr_writer :value
 
     def event
       @event ||= user.events.new(params)

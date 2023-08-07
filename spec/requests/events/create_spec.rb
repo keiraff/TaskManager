@@ -26,7 +26,7 @@ RSpec.describe "POST /events", type: :request do
       it "returns success response" do
         expect { request }.to change(user.events, :count).by(1)
 
-        expect(response).to redirect_to "/events"
+        expect(response).to redirect_to "/events/#{user.events.last.id}"
 
         expect(user.events.last).to have_attributes(attributes.except(:starts_at))
         expect(user.events.last.starts_at.to_s).to eq(attributes[:starts_at].to_s)

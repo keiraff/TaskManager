@@ -25,7 +25,7 @@ class EventsController < AuthenticatedController
     @event = result.value
     if result.success?
       flash[:success] = "Event created!"
-      redirect_to events_url
+      redirect_to @event
     else
       flash.now[:danger] = "Something went wrong :("
       render "new"
@@ -37,7 +37,7 @@ class EventsController < AuthenticatedController
 
     result = Events::Update.call(current_user, event, event_params)
 
-    @event = result.event
+    @event = result.value
     if result.success?
       flash[:success] = "Event updated!"
       redirect_to @event
