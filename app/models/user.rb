@@ -5,6 +5,7 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
+#  city_name       :string
 #  email           :citext           not null
 #  first_name      :string
 #  last_name       :string

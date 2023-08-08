@@ -6,5 +6,12 @@
       <%= current_user.errors.messages_for(:time_zone).join(", ") if current_user.errors.any? %>
     </small>
   </div>
-  <%= f.submit "Update time zone", class: "btn btn-primary mt-3" %>
+  <div class="mt-2">
+    <%= f.label :city_name, "City Name", class: "form-label" %>
+    <%= f.text_field :city_name, placeholder: "City Name", class: "form-control" %>
+    <small class="text-danger">
+      <%= current_user.errors.messages_for(:city_name).join(", ") if current_user.errors.any? %>
+    </small>
+  </div>
+  <%= f.submit "Update your info", class: "btn btn-primary mt-3" %>
 <% end %>
