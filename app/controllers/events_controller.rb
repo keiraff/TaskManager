@@ -9,6 +9,14 @@ class EventsController < AuthenticatedController
 
   def show
     event
+
+    result = Events::WeatherUrlService.call(current_user, event)
+
+    if result.success?
+      @external_api_url = result.value
+    else
+      @request_error = result.errors
+    end
   end
 
   def new
@@ -52,6 +60,17 @@ class EventsController < AuthenticatedController
 
     flash[:success] = "Event deleted!"
     redirect_to events_url
+  end
+
+  def weather_info
+    result = Events::WeatherApiJsonResponseParser.call(event, params[:data])
+
+    if result.success?
+      @weather = result.value
+    else
+      @json_parse_error = result.errors
+    end
+    render layout: false
   end
 
   private

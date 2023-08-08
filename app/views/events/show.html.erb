@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-end mb-4">
+<div class="d-flex justify-content-end mb-4" id="event-info">
   <% if policy(@event).update? %>
     <div>
       <%= link_to "Edit", edit_event_path(@event), class: "btn btn-secondary btn-sm" %>
@@ -34,8 +34,23 @@
     <span class="text-success"><%= @event.decorated_notify_at %></span>
   </div>
 </div>
-<div class="mt-4">
-  <div class="text-bg-secondary">
+<div class="d-flex justify-content-between mt-4">
+  <div class="text-bg-secondary" id="description-content">
     <%= @event.description %>
+  </div>
+  <div id="weather-content" style="min-width: 300px; max-width: 300px;">
+    <div class="text-end h6">Forecast for this day:</div>
+    <% if @request_error %>
+      <div class="text-end">
+        <%= @request_error %>
+      </div>
+    <% else %>
+      <span id="external-api-url" style="display: none;"><%= @external_api_url %></span>
+      <span id="weather-url" style="display: none;"><%= weather_info_event_path %></span>
+      <div class="d-flex justify-content-end">
+        <span id="loader"></span>
+        <div id="weather-info"></div>
+      </div>
+    <% end %>
   </div>
 </div>
