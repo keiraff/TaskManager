@@ -25,9 +25,9 @@ module Events
     private
 
     def set_request_url
-      return if user.city_name.blank?
+      return if user.city.blank?
 
-      coordinates = coordinates_of_city(user.city_name)
+      coordinates = city_coordinates
 
       params = {
         hourly: WEATHER_PARAMETERS.join(","),
@@ -40,8 +40,18 @@ module Events
       "#{BASE_URL}?#{params.to_query}"
     end
 
-    def coordinates_of_city(city)
-      Geocoder.search(city).first.coordinates
+    def city_coordinates
+      results = Geocoder.search(user.city, params: { countrycodes: user.country })
+
+      (result_from_correct_state(results) || results.first).coordinates
+    end
+
+    def result_from_correct_state(results)
+      results.find { |value| value.data["address"]["state"] == state } if results.count > 1
+    end
+
+    def state
+      @state ||= CS.states(user.country)[user.state.to_sym]
     end
   end
 end

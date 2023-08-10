@@ -109,6 +109,7 @@ GEM
       railties (>= 5.0.0)
     ffaker (2.21.0)
     ffi (1.15.5)
+    geocoder (1.8.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -329,6 +330,7 @@ DEPENDENCIES
   factory_bot_rails
   ffaker
   http
+  geocoder
   importmap-rails
   jbuilder
   pagy
