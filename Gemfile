@@ -8,7 +8,7 @@ ruby "3.1.3"
 gem "active_decorator"
 gem "bcrypt"
 gem "bootsnap", require: false
-gem "geocoder"
+gem "city-state"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pagy"
