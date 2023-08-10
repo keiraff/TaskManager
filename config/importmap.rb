@@ -4,6 +4,7 @@
 
 pin "application", preload: true
 pin_all_from "app/javascript/events", under: "events", preload: true
+pin_all_from "app/javascript/settings", under: "settings", preload: true
 pin_all_from "app/javascript/users", under: "users", preload: true
 
 pin "@popperjs/core", to: "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/esm/popper.min.js", preload: true
