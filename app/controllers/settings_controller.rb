@@ -1,17 +1,7 @@
 # frozen_string_literal: true
 
 class SettingsController < AuthenticatedController
-  def edit
-    return unless request.xhr?
-
-    result = Settings::Edit.call(params[:country], params[:state])
-
-    respond_to do |format|
-      format.json do
-        render json: { states: result.value[:states], cities: result.value[:cities] }
-      end
-    end
-  end
+  def edit; end
 
   def update
     if current_user.update(settings_params)

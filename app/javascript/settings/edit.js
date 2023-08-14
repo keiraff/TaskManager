@@ -9,7 +9,7 @@ $(document).ready(function() {
 
         // Send ajax request with country info
         $.ajax({
-            url: "/settings/1/edit",
+            url: "/location",
             method: "GET",
             dataType: "json",
             data: {country: country},
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
         // Send ajax request with state info
         $.ajax({
-            url: "/settings/1/edit",
+            url: "/location",
             method: "GET",
             dataType: "json",
             data: {state: state, country: country},

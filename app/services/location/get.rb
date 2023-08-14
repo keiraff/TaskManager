@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Settings
-  class Edit < ApplicationService
+module Location
+  class Get < ApplicationService
     attr_reader :country, :state
 
     def initialize(country, state)
@@ -10,9 +10,6 @@ module Settings
     end
 
     def call
-      states if country.present?
-      cities if state.present?
-
       success({ cities: cities, states: states })
     end
 
@@ -21,10 +18,14 @@ module Settings
     attr_writer :cities, :states
 
     def states
+      return if country.blank?
+
       @states ||= CS.states(country)
     end
 
     def cities
+      return if state.blank? && country.blank?
+
       @cities ||= CS.cities(state, country)
     end
   end
