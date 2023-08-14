@@ -4,11 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show]
   resources :categories, except: [:show]
-  resources :events do
-    member do
-      post "weather_info"
-    end
-  end
+  resources :events
 
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Events
-  class Weather
+module Weather
+  class Entity
     attr_accessor :temperature, :precipitation, :weather_code, :image,
                   :description, :is_day
 

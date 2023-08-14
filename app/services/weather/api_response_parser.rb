@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Events
-  class WeatherApiJsonResponseParser < ApplicationService
+module Weather
+  class ApiResponseParser < ApplicationService
     attr_reader :event, :data
 
     def initialize(event, data)
@@ -28,8 +28,8 @@ module Events
 
       parsed_data = JSON.parse(data.to_json, symbolize_names: true)[:hourly]
 
-      Weather.new(parsed_data[:temperature_2m][time], parsed_data[:precipitation_probability][time],
-                  parsed_data[:weathercode][time], parsed_data[:is_day][time])
+      Weather::Entity.new(parsed_data[:temperature_2m][time], parsed_data[:precipitation_probability][time],
+                          parsed_data[:weathercode][time], parsed_data[:is_day][time])
     end
 
     def data_invalid?(time)

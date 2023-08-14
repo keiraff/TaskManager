@@ -45,11 +45,17 @@
         <%= @request_error %>
       </div>
     <% else %>
-      <span id="external-api-url" style="display: none;"><%= @external_api_url %></span>
-      <span id="weather-url" style="display: none;"><%= weather_info_event_path %></span>
       <div class="d-flex justify-content-end">
-        <span id="loader"></span>
-        <div id="weather-info"></div>
+        <div id="weather-info">
+          <div class="d-flex justify-content-end">
+            <img src="<%= @weather.image %>" alt="image">
+          </div>
+          <div>
+            <span><%= @weather.description %></span>
+          </div>
+          <span>Temperature: <%= @weather.temperature %>°C</span>
+          <p>Precipitation probability: <%= @weather.precipitation %>%</p>
+        </div>
       </div>
     <% end %>
   </div>
