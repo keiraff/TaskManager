@@ -107,16 +107,12 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (2.7.10)
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
     ffaker (2.21.0)
     ffi (1.15.5)
-    geocoder (1.8.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    geocoder (1.8.2)
     globalid (1.2.0)
       activesupport (>= 6.1)
     hashdiff (1.0.1)
@@ -333,10 +329,9 @@ DEPENDENCIES
   debug
   dotenv-rails
   factory_bot_rails
-  faraday
   ffaker
-  http
   geocoder
+  http
   importmap-rails
   jbuilder
   pagy

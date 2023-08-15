@@ -9,7 +9,6 @@ gem "active_decorator"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "city-state"
-gem "faraday"
 gem "geocoder"
 gem "http"
 gem "importmap-rails"

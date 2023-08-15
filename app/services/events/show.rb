@@ -10,19 +10,10 @@ module Events
     end
 
     def call
-      result = Weather::ApiRequestService.call(event, user)
+      result = Weather::Load.call(city: user.city, state_code: user.state, country_code: user.country,
+                                  date: event.starts_at, all_day: event.all_day)
 
-      if result.success?
-        result = Weather::ApiResponseParser.call(event, result.value)
-
-        if result.success?
-          success(result.value)
-        else
-          failure(result.errors)
-        end
-      else
-        failure(result.errors)
-      end
+      result.success? ? success(result.value) : failure(result.errors)
     end
   end
 end

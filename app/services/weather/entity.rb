@@ -5,11 +5,11 @@ module Weather
     attr_accessor :temperature, :precipitation, :weather_code, :image,
                   :description, :is_day
 
-    def initialize(temperature, precipitation, weather_code, is_day)
-      @temperature = temperature
-      @precipitation = precipitation
-      @weather_code = weather_code
-      @is_day = day_or_night(is_day)
+    def initialize(data, hour)
+      @temperature = data[:temperature_2m][hour]
+      @precipitation = data[:precipitation_probability][hour]
+      @weather_code = data[:weathercode][hour]
+      @is_day = day_or_night(data[:is_day][hour])
       @description = description_from_weather_code
       @image = image_from_weather_code
     end
