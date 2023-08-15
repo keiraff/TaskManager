@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Location
-  class Get < ApplicationService
+  class Show < ApplicationService
     attr_reader :country, :state
 
-    def initialize(country, state)
+    def initialize(country:, state:)
       @country = country
       @state = state
     end

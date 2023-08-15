@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :settings, only: [:edit, :update]
 
-  get "/location", to: "location#get"
+  resource :location, only: [:show], controller: :location
 
   root "static_pages#home"
 end
