@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&countrycodes=US&format=json&q=New%20York
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Aug 2023 17:29:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1070'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjM2NzAxMTUxNCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6InJlbGF0aW9uIiwib3NtX2lkIjoxNzU5MDUsImxhdCI6IjQwLjcxMjcyODEiLCJsb24iOiItNzQuMDA2MDE1MiIsImNsYXNzIjoiYm91bmRhcnkiLCJ0eXBlIjoiYWRtaW5pc3RyYXRpdmUiLCJwbGFjZV9yYW5rIjoxMCwiaW1wb3J0YW5jZSI6MC44MTc1NzY2MTE0NTE4NDYxLCJhZGRyZXNzdHlwZSI6ImNpdHkiLCJuYW1lIjoiTmV3IFlvcmsiLCJkaXNwbGF5X25hbWUiOiJOZXcgWW9yaywgVW5pdGVkIFN0YXRlcyIsImFkZHJlc3MiOnsiY2l0eSI6Ik5ldyBZb3JrIiwic3RhdGUiOiJOZXcgWW9yayIsIklTTzMxNjYtMi1sdmw0IjoiVVMtTlkiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn0sImJvdW5kaW5nYm94IjpbIjQwLjQ3NjU3ODAiLCI0MC45MTc2MzAwIiwiLTc0LjI1ODg0MzAiLCItNzMuNzAwMjMzMCJdfSx7InBsYWNlX2lkIjoyOTc5MDQ4ODAsImxpY2VuY2UiOiJEYXRhIMKpIE9wZW5TdHJlZXRNYXAgY29udHJpYnV0b3JzLCBPRGJMIDEuMC4gaHR0cDovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJyZWxhdGlvbiIsIm9zbV9pZCI6NjEzMjAsImxhdCI6IjQzLjE1NjE2ODEiLCJsb24iOiItNzUuODQ0OTk0NiIsImNsYXNzIjoiYm91bmRhcnkiLCJ0eXBlIjoiYWRtaW5pc3RyYXRpdmUiLCJwbGFjZV9yYW5rIjo4LCJpbXBvcnRhbmNlIjowLjc2NTU4NDY0MDkwODk1NzQsImFkZHJlc3N0eXBlIjoic3RhdGUiLCJuYW1lIjoiTmV3IFlvcmsiLCJkaXNwbGF5X25hbWUiOiJOZXcgWW9yaywgVW5pdGVkIFN0YXRlcyIsImFkZHJlc3MiOnsic3RhdGUiOiJOZXcgWW9yayIsIklTTzMxNjYtMi1sdmw0IjoiVVMtTlkiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn0sImJvdW5kaW5nYm94IjpbIjQwLjQ3NjU3ODAiLCI0NS4wMTU4NjExIiwiLTc5Ljc2MTk3NTgiLCItNzEuNzkwOTcyMCJdfV0=
+  recorded_at: Tue, 15 Aug 2023 17:29:35 GMT
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?end_date=2023-08-16&hourly=temperature_2m,precipitation_probability,weathercode,is_day&latitude=40.7127281&longitude=-74.0060152&start_date=2023-08-16
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Access:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.open-meteo.com
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 15 Aug 2023 17:29:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"latitude":40.710335,"longitude":-73.99307,"generationtime_ms":0.38301944732666016,"utc_offset_seconds":0,"timezone":"GMT","timezone_abbreviation":"GMT","elevation":32.0,"hourly_units":{"time":"iso8601","temperature_2m":"°C","precipitation_probability":"%","weathercode":"wmo
+        code","is_day":""},"hourly":{"time":["2023-08-16T00:00","2023-08-16T01:00","2023-08-16T02:00","2023-08-16T03:00","2023-08-16T04:00","2023-08-16T05:00","2023-08-16T06:00","2023-08-16T07:00","2023-08-16T08:00","2023-08-16T09:00","2023-08-16T10:00","2023-08-16T11:00","2023-08-16T12:00","2023-08-16T13:00","2023-08-16T14:00","2023-08-16T15:00","2023-08-16T16:00","2023-08-16T17:00","2023-08-16T18:00","2023-08-16T19:00","2023-08-16T20:00","2023-08-16T21:00","2023-08-16T22:00","2023-08-16T23:00"],"temperature_2m":[23.1,22.6,21.8,21.8,22.0,21.9,22.0,21.6,21.6,21.5,21.1,21.1,21.3,22.1,23.1,23.2,24.4,25.9,27.6,27.9,27.4,26.6,25.7,24.0],"precipitation_probability":[65,58,52,45,48,52,55,48,42,35,24,14,3,6,10,13,12,11,10,9,7,6,6,6],"weathercode":[3,51,51,3,3,3,2,3,3,3,2,3,3,2,3,3,2,0,1,1,1,1,0,1],"is_day":[0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1]}}'
+  recorded_at: Tue, 15 Aug 2023 17:29:35 GMT
+recorded_with: VCR 6.2.0
