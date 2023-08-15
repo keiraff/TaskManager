@@ -22,15 +22,15 @@ $(document).ready(function() {
                 // Check if states has any values
                 if(jQuery.isEmptyObject(states)) {
                     // Disable state and city selects
-                    $("#state_select").empty().append('<option value>Select State</option>').prop('disabled', true);
-                    $("#city_select").empty().append('<option value>Select City</option>').prop('disabled', true);
+                    $("#state_select").empty().append('<option value>Select State</option>');
+                    $("#city_select").empty().append('<option value>Select City</option>');
 
                     // Show error message
                     $("#state_select_errors").text("No states found.");
                 } else {
                     // Enable state and city selects, delete previous options and set default options to selects
-                    $("#state_select").prop('disabled', false).empty().append('<option value>Select State</optionvalue>');
-                    $("#city_select").prop('disabled', false).empty().append('<option value>Select City</option>');
+                    $("#state_select").empty().append('<option value>Select State</optionvalue>');
+                    $("#city_select").empty().append('<option value>Select City</option>');
 
                     // Hide error message
                     $("#state_select_errors").text("");
@@ -64,21 +64,21 @@ $(document).ready(function() {
                 // Check if cities has any values
                 if(jQuery.isEmptyObject(cities)) {
                     // Disable city select
-                    $("#city_select").empty().append('<option value>Select City</option>').prop('disabled', true);
+                    $("#city_select").empty().append('<option value>Select City</option>');
 
                     // Show error message
                     $("#city_select_errors").text("No cities found.");
                 } else {
                     // Enable city select, delete previous options and set default option to select
-                    $("#city_select").prop('disabled', false).empty().append('<option value>Select City</option>');
+                    $("#city_select").empty().append('<option value>Select City</option>');
 
                     // Hide error message
                     $("#city_select_errors").text("");
 
                     // Append options to city select with values from ajax response
-                    for (var i = 0; i < cities.length; i++) {
-                        $("#city_select").append('<option value="' + cities[i] + '">' + cities[i] + '</option>');
-                    }
+                    $.each(cities, function(index) {
+                        $("#city_select").append('<option value="' + cities[index] + '">' + cities[index] + '</option>');
+                    });
                 }
             }
         });
