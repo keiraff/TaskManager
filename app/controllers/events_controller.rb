@@ -8,15 +8,10 @@ class EventsController < AuthenticatedController
   end
 
   def show
-    result = Weather::ApiRequestService.call(event, current_user)
+    result = Events::Show.call(event, current_user)
 
     if result.success?
-      result = Weather::ApiResponseParser.call(event, result.value)
-      if result.success?
-        @weather = result.value
-      else
-        @request_error = result.errors
-      end
+      @weather = result.value
     else
       @request_error = result.errors
     end

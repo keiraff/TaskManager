@@ -22,18 +22,22 @@ module Weather
     private
 
     def weather_from_parsed_data
-      time = event.starts_at.hour
+      hour = event_starts_at_hour
 
-      return if data_invalid?(time)
+      return if data_invalid?(hour)
 
       parsed_data = JSON.parse(data.to_json, symbolize_names: true)[:hourly]
 
-      Weather::Entity.new(parsed_data[:temperature_2m][time], parsed_data[:precipitation_probability][time],
-                          parsed_data[:weathercode][time], parsed_data[:is_day][time])
+      Weather::Entity.new(parsed_data[:temperature_2m][hour], parsed_data[:precipitation_probability][hour],
+                          parsed_data[:weathercode][hour], parsed_data[:is_day][hour])
     end
 
-    def data_invalid?(time)
-      data["hourly"]["weathercode"][time].blank?
+    def data_invalid?(hour)
+      data["hourly"]["weathercode"][hour].blank?
+    end
+
+    def event_starts_at_hour
+      event.all_day? ? 12 : event.starts_at.hour
     end
   end
 end
