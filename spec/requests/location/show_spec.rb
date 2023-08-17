@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe "GET /location", type: :request do
+  subject(:request) { get "/location", params: attributes, as: :json }
+
   context "when user authenticated" do
     let(:user) { create(:user) }
 
     before do
       login(user)
+
+      request
     end
 
     context "with valid params" do
@@ -17,8 +21,6 @@ RSpec.describe "GET /location", type: :request do
       end
 
       it "returns success responce" do
-        get "/location", xhr: true, params: attributes
-
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq("application/json; charset=utf-8")
         expect(response.body).to include(CS.states(attributes[:country]).first[1],
@@ -35,8 +37,6 @@ RSpec.describe "GET /location", type: :request do
       end
 
       it "returns success responce" do
-        get "/location", xhr: true, params: attributes
-
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq("application/json; charset=utf-8")
         expect(response.body).to include("{\"states\":null,\"cities\":null}")

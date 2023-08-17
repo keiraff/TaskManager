@@ -4,7 +4,7 @@ module Location
   class Show < ApplicationService
     attr_reader :country, :state
 
-    def initialize(country:, state:)
+    def initialize(country:, state: nil)
       @country = country
       @state = state
     end

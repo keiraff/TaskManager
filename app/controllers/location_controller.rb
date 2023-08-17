@@ -2,7 +2,7 @@
 
 class LocationController < AuthenticatedController
   def show
-    result = Location::Show.call(country: permitted_params[:country], state: permitted_params[:state])
+    result = Location::Show.call(**show_params.to_h.symbolize_keys)
 
     respond_to do |format|
       format.json do
@@ -13,7 +13,7 @@ class LocationController < AuthenticatedController
 
   private
 
-  def permitted_params
+  def show_params
     params.permit(:country, :state)
   end
 end
