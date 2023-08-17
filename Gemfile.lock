@@ -86,6 +86,8 @@ GEM
     city-state (0.1.0)
       rubyzip (>= 1.1)
     concurrent-ruby (1.2.2)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.1)
@@ -112,6 +114,7 @@ GEM
       rake
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -294,11 +297,16 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
+    vcr (6.2.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webmock (3.18.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -341,7 +349,9 @@ DEPENDENCIES
   strong_migrations
   turbo-rails
   tzinfo-data
+  vcr
   web-console
+  webmock
 
 RUBY VERSION
    ruby 3.1.3p185
