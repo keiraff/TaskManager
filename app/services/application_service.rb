@@ -19,8 +19,8 @@ class ApplicationService
     self.errors = errors
   end
 
-  def self.call(*args)
-    service = new(*args)
+  def self.call(*args, **kwargs)
+    service = new(*args, **kwargs)
 
     service.call
     service

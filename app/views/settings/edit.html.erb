@@ -1,4 +1,4 @@
-<%= form_with model: current_user, url: setting_url, method: :patch do |f| %>
+<%= form_with model: current_user, url: setting_url, id: "edit_settings_form", method: :patch do |f| %>
   <div>
     <%= f.label :time_zone, "Select your time zone", class: "form-label" %>
     <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.all, {}, { class: "form-select" }) %>
@@ -6,5 +6,23 @@
       <%= current_user.errors.messages_for(:time_zone).join(", ") if current_user.errors.any? %>
     </small>
   </div>
-  <%= f.submit "Update time zone", class: "btn btn-primary mt-3" %>
+  <div class="mt-2">
+    <%= f.label :country, "Country", class: "form-label" %>
+    <%= f.select :country, country_options_for_select, { :include_blank => "Select Country" }, class: "form-control", id: "country_select" %>
+  </div>
+  <div class="mt-2" id="states">
+    <%= f.label :state, "State", class: "form-label" %>
+    <%= f.select :state, state_options_for_select(current_user.country), { :include_blank => "Select State" }, class: "form-control", id: "state_select" %>
+    <small>
+      <span id="state_select_errors" class="text-danger"></span>
+    </small>
+  </div>
+  <div class="mt-2" id="cities">
+    <%= f.label :city, "City", class: "form-label" %>
+    <%= f.select :city, city_options_for_select(current_user.state, current_user.country), { :include_blank => "Select City" }, class: "form-control", id: "city_select" %>
+    <small>
+      <span id="city_select_errors" class="text-danger"></span>
+    </small>
+  </div>
+  <%= f.submit "Update your info", class: "btn btn-primary mt-3" %>
 <% end %>

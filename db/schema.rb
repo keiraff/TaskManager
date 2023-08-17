@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_125031) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_090830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -49,6 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_125031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "time_zone", default: "UTC", null: false
+    t.string "country"
+    t.string "state"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

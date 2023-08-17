@@ -5,10 +5,13 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
+#  city            :string
+#  country         :string
 #  email           :citext           not null
 #  first_name      :string
 #  last_name       :string
 #  password_digest :string           not null
+#  state           :string
 #  time_zone       :string           default("UTC"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

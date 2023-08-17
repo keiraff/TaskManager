@@ -5,7 +5,7 @@ class SettingsController < AuthenticatedController
 
   def update
     if current_user.update(settings_params)
-      flash[:success] = "Time zone is updated!"
+      flash[:success] = "Information is updated!"
       redirect_to current_user
     else
       flash.now[:danger] = "Something went wrong :("
@@ -16,6 +16,6 @@ class SettingsController < AuthenticatedController
   private
 
   def settings_params
-    params.require(:user).permit(:time_zone)
+    params.require(:user).permit(:time_zone, :country, :state, :city)
   end
 end
