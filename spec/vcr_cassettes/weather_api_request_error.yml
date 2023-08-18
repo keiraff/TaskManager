@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 15 Aug 2023 17:29:36 GMT
+      - Fri, 18 Aug 2023 12:13:33 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -31,13 +31,18 @@ http_interactions:
       Keep-Alive:
       - timeout=20
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        W3sicGxhY2VfaWQiOjM2NzAxMTUxNCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6InJlbGF0aW9uIiwib3NtX2lkIjoxNzU5MDUsImxhdCI6IjQwLjcxMjcyODEiLCJsb24iOiItNzQuMDA2MDE1MiIsImNsYXNzIjoiYm91bmRhcnkiLCJ0eXBlIjoiYWRtaW5pc3RyYXRpdmUiLCJwbGFjZV9yYW5rIjoxMCwiaW1wb3J0YW5jZSI6MC44MTc1NzY2MTE0NTE4NDYxLCJhZGRyZXNzdHlwZSI6ImNpdHkiLCJuYW1lIjoiTmV3IFlvcmsiLCJkaXNwbGF5X25hbWUiOiJOZXcgWW9yaywgVW5pdGVkIFN0YXRlcyIsImFkZHJlc3MiOnsiY2l0eSI6Ik5ldyBZb3JrIiwic3RhdGUiOiJOZXcgWW9yayIsIklTTzMxNjYtMi1sdmw0IjoiVVMtTlkiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn0sImJvdW5kaW5nYm94IjpbIjQwLjQ3NjU3ODAiLCI0MC45MTc2MzAwIiwiLTc0LjI1ODg0MzAiLCItNzMuNzAwMjMzMCJdfSx7InBsYWNlX2lkIjoyOTc5MDQ4ODAsImxpY2VuY2UiOiJEYXRhIMKpIE9wZW5TdHJlZXRNYXAgY29udHJpYnV0b3JzLCBPRGJMIDEuMC4gaHR0cDovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJyZWxhdGlvbiIsIm9zbV9pZCI6NjEzMjAsImxhdCI6IjQzLjE1NjE2ODEiLCJsb24iOiItNzUuODQ0OTk0NiIsImNsYXNzIjoiYm91bmRhcnkiLCJ0eXBlIjoiYWRtaW5pc3RyYXRpdmUiLCJwbGFjZV9yYW5rIjo4LCJpbXBvcnRhbmNlIjowLjc2NTU4NDY0MDkwODk1NzQsImFkZHJlc3N0eXBlIjoic3RhdGUiLCJuYW1lIjoiTmV3IFlvcmsiLCJkaXNwbGF5X25hbWUiOiJOZXcgWW9yaywgVW5pdGVkIFN0YXRlcyIsImFkZHJlc3MiOnsic3RhdGUiOiJOZXcgWW9yayIsIklTTzMxNjYtMi1sdmw0IjoiVVMtTlkiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn0sImJvdW5kaW5nYm94IjpbIjQwLjQ3NjU3ODAiLCI0NS4wMTU4NjExIiwiLTc5Ljc2MTk3NTgiLCItNzEuNzkwOTcyMCJdfV0=
-  recorded_at: Tue, 15 Aug 2023 17:29:36 GMT
+      encoding: UTF-8
+      string: '[{"place_id":362105211,"licence":"Data © OpenStreetMap contributors,
+        ODbL 1.0. http://osm.org/copyright","osm_type":"relation","osm_id":175905,"lat":"40.7127281","lon":"-74.0060152","class":"boundary","type":"administrative","place_rank":10,"importance":0.8175766114518461,"addresstype":"city","name":"New
+        York","display_name":"New York, United States","address":{"city":"New York","state":"New
+        York","ISO3166-2-lvl4":"US-NY","country":"United States","country_code":"us"},"boundingbox":["40.4765780","40.9176300","-74.2588430","-73.7002330"]},{"place_id":307697759,"licence":"Data
+        © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright","osm_type":"relation","osm_id":61320,"lat":"43.1561681","lon":"-75.8449946","class":"boundary","type":"administrative","place_rank":8,"importance":0.7655846409089574,"addresstype":"state","name":"New
+        York","display_name":"New York, United States","address":{"state":"New York","ISO3166-2-lvl4":"US-NY","country":"United
+        States","country_code":"us"},"boundingbox":["40.4765780","45.0158611","-79.7619758","-71.7909720"]}]'
+  recorded_at: Fri, 18 Aug 2023 12:13:33 GMT
 - request:
     method: get
-    uri: https://api.open-meteo.com/v1/forecast?end_date=2023-09-01&hourly=temperature_2m,precipitation_probability,weathercode,is_day&latitude=40.7127281&longitude=-74.0060152&start_date=2023-09-01
+    uri: https://api.open-meteo.com/v1/forecast?end_date=2023-09-04&hourly=temperature_2m,precipitation_probability,weathercode,is_day&latitude=40.7127281&longitude=-74.0060152&start_date=2023-09-04
     body:
       encoding: UTF-8
       string: ''
@@ -56,7 +61,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Tue, 15 Aug 2023 17:29:36 GMT
+      - Fri, 18 Aug 2023 12:13:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -66,6 +71,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"reason":"Parameter ''start_date'' is out of allowed range from 2022-06-08
-        to 2023-08-30","error":true}'
-  recorded_at: Tue, 15 Aug 2023 17:29:36 GMT
+        to 2023-09-02","error":true}'
+  recorded_at: Fri, 18 Aug 2023 12:13:33 GMT
 recorded_with: VCR 6.2.0

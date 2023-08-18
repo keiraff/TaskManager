@@ -23,7 +23,7 @@ RSpec.describe "GET /events/:id", type: :request do
         end
 
         context "when get invalid data from external api" do
-          let(:event) { build(:event, starts_at: 12.weeks.ago, user: user, category: category) }
+          let(:event) { build(:event, starts_at: 3.months.ago, user: user, category: category) }
 
           before do
             event.save(validate: false)
