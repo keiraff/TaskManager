@@ -19,6 +19,7 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'db/schema.rb'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'config/environments/development.rb'
 
 Rails/I18nLocaleTexts:
   Enabled: false

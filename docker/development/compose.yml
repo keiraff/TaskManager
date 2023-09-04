@@ -39,9 +39,37 @@ services:
     networks:
       - task-manager-development-network
 
+  redis:
+    container_name: task-manager-development-redis
+    image: redis:6-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server
+    volumes:
+      - redis:/data
+    networks:
+      - task-manager-development-network
+
+  sidekiq:
+    container_name: task-manager-development-sidekiq
+    build:
+      context: ../..
+      dockerfile: docker/Dockerfile
+    command: bundle exec sidekiq
+    volumes:
+      - ../../.:/task-manager
+    env_file: ../../.env
+    depends_on:
+      - task-manager-development-postgres
+      - redis
+    networks:
+      - task-manager-development-network
+
 networks:
   task-manager-development-network:
     name: task-manager-development-network
 
 volumes:
   task-manager-development-postgres-data:
+  redis:
