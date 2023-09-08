@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    result = UserRegistrationService.call(create_params)
+    result = Users::Create.call(create_params)
 
     @user = result.user
     if result.success?
