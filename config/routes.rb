@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   resource :location, only: [:show], controller: :location
 
+  mount Sidekiq::Web => "/sidekiq"
+
   root "static_pages#home"
 end
