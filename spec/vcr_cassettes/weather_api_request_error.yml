@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&countrycodes=US&format=json&q=New%20York
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 18 Aug 2023 12:13:33 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1070'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+    body:
+      encoding: UTF-8
+      string: '[{"place_id":362105211,"licence":"Data © OpenStreetMap contributors,
+        ODbL 1.0. http://osm.org/copyright","osm_type":"relation","osm_id":175905,"lat":"40.7127281","lon":"-74.0060152","class":"boundary","type":"administrative","place_rank":10,"importance":0.8175766114518461,"addresstype":"city","name":"New
+        York","display_name":"New York, United States","address":{"city":"New York","state":"New
+        York","ISO3166-2-lvl4":"US-NY","country":"United States","country_code":"us"},"boundingbox":["40.4765780","40.9176300","-74.2588430","-73.7002330"]},{"place_id":307697759,"licence":"Data
+        © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright","osm_type":"relation","osm_id":61320,"lat":"43.1561681","lon":"-75.8449946","class":"boundary","type":"administrative","place_rank":8,"importance":0.7655846409089574,"addresstype":"state","name":"New
+        York","display_name":"New York, United States","address":{"state":"New York","ISO3166-2-lvl4":"US-NY","country":"United
+        States","country_code":"us"},"boundingbox":["40.4765780","45.0158611","-79.7619758","-71.7909720"]}]'
+  recorded_at: Fri, 18 Aug 2023 12:13:33 GMT
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?end_date=2023-09-04&hourly=temperature_2m,precipitation_probability,weathercode,is_day&latitude=40.7127281&longitude=-74.0060152&start_date=2023-09-04
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Access:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.open-meteo.com
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 18 Aug 2023 12:13:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '102'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"reason":"Parameter ''start_date'' is out of allowed range from 2022-06-08
+        to 2023-09-02","error":true}'
+  recorded_at: Fri, 18 Aug 2023 12:13:33 GMT
+recorded_with: VCR 6.2.0

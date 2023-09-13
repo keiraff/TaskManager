@@ -112,6 +112,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    geocoder (1.8.2)
     globalid (1.2.0)
       activesupport (>= 6.1)
     hashdiff (1.0.1)
@@ -257,6 +258,7 @@ GEM
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -328,6 +330,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   ffaker
+  geocoder
   http
   importmap-rails
   jbuilder

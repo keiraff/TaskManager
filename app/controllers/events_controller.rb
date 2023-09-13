@@ -8,7 +8,13 @@ class EventsController < AuthenticatedController
   end
 
   def show
-    event
+    result = Events::Show.call(event, current_user)
+
+    if result.success?
+      @weather = result.value
+    else
+      @request_error = result.errors
+    end
   end
 
   def new

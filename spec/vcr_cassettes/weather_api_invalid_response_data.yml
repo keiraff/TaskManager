@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&countrycodes=US&format=json&q=New%20York
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 18 Aug 2023 12:13:31 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1070'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+    body:
+      encoding: UTF-8
+      string: '[{"place_id":362105211,"licence":"Data © OpenStreetMap contributors,
+        ODbL 1.0. http://osm.org/copyright","osm_type":"relation","osm_id":175905,"lat":"40.7127281","lon":"-74.0060152","class":"boundary","type":"administrative","place_rank":10,"importance":0.8175766114518461,"addresstype":"city","name":"New
+        York","display_name":"New York, United States","address":{"city":"New York","state":"New
+        York","ISO3166-2-lvl4":"US-NY","country":"United States","country_code":"us"},"boundingbox":["40.4765780","40.9176300","-74.2588430","-73.7002330"]},{"place_id":307697759,"licence":"Data
+        © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright","osm_type":"relation","osm_id":61320,"lat":"43.1561681","lon":"-75.8449946","class":"boundary","type":"administrative","place_rank":8,"importance":0.7655846409089574,"addresstype":"state","name":"New
+        York","display_name":"New York, United States","address":{"state":"New York","ISO3166-2-lvl4":"US-NY","country":"United
+        States","country_code":"us"},"boundingbox":["40.4765780","45.0158611","-79.7619758","-71.7909720"]}]'
+  recorded_at: Fri, 18 Aug 2023 12:13:31 GMT
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?end_date=2023-05-18&hourly=temperature_2m,precipitation_probability,weathercode,is_day&latitude=40.7127281&longitude=-74.0060152&start_date=2023-05-18
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Access:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.open-meteo.com
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Aug 2023 12:13:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"latitude":40.710335,"longitude":-73.99307,"generationtime_ms":0.49507617950439453,"utc_offset_seconds":0,"timezone":"GMT","timezone_abbreviation":"GMT","elevation":32.0,"hourly_units":{"time":"iso8601","temperature_2m":"°C","precipitation_probability":"%","weathercode":"wmo
+        code","is_day":""},"hourly":{"time":["2023-05-18T00:00","2023-05-18T01:00","2023-05-18T02:00","2023-05-18T03:00","2023-05-18T04:00","2023-05-18T05:00","2023-05-18T06:00","2023-05-18T07:00","2023-05-18T08:00","2023-05-18T09:00","2023-05-18T10:00","2023-05-18T11:00","2023-05-18T12:00","2023-05-18T13:00","2023-05-18T14:00","2023-05-18T15:00","2023-05-18T16:00","2023-05-18T17:00","2023-05-18T18:00","2023-05-18T19:00","2023-05-18T20:00","2023-05-18T21:00","2023-05-18T22:00","2023-05-18T23:00"],"temperature_2m":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"precipitation_probability":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"weathercode":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"is_day":[1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1]}}'
+  recorded_at: Fri, 18 Aug 2023 12:13:31 GMT
+recorded_with: VCR 6.2.0

@@ -61,3 +61,6 @@ RSpec/MultipleExpectations:
 
 RSpec/MultipleMemoizedHelpers:
   Max: 10
+
+Metrics/AbcSize:
+  Max: 20
