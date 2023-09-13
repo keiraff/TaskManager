@@ -18,7 +18,7 @@ RSpec.describe Users::Create do
       expect(service.success?).to be(true)
       expect(service.value.class).to be(User)
 
-      expect(User.last).to have_attributes(user_attributes.except(:password, :password_confirmation))
+      expect(service.user).to have_attributes(user_attributes.except(:password, :password_confirmation))
     end
   end
 

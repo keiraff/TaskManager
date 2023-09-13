@@ -11,7 +11,7 @@ module Users
     end
 
     def call
-      self.user = User.new(@params)
+      self.user = User.new(params)
 
       user.categories.new(DEFAULT_CATEGORIES_NAMES.map { |name| { name: name } })
 
