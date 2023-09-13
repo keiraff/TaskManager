@@ -7,7 +7,7 @@ VCR.configure do |config|
 
   config.default_cassette_options = {
     allow_unused_http_interactions: false,
-    match_requests_on: [VCR.request_matchers.uri_without_param(:start_date, :end_date), :method, :body],
+    match_requests_on: [:uri, :headers, :method, :body],
   }
 
   config.before_record do |interaction|

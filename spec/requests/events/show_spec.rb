@@ -28,11 +28,15 @@ RSpec.describe "GET /events/:id", type: :request do
 
       before do
         login(user)
+
+        VCR.use_cassette("weather_api_valid_response_data",
+                         match_requests_on: [VCR.request_matchers.uri_without_param(:start_date, :end_date), :headers,
+                                             :method, :body]) do
+          get "/events/#{event.id}"
+        end
       end
 
-      it "returns success response", vcr: "weather_api_valid_response_data" do
-        get "/events/#{event.id}"
-
+      it "returns success response" do
         expect(response).to have_http_status(:ok)
         expect(response.body).to include("Temperature", "Precipitation probability")
       end

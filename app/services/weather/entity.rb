@@ -2,8 +2,8 @@
 
 module Weather
   class Entity
-    attr_accessor :temperature, :precipitation, :weather_code, :image,
-                  :description, :is_day
+    attr_reader :temperature, :precipitation, :weather_code, :image,
+                :description, :is_day
 
     def initialize(data, hour)
       @temperature = data[:temperature_2m][hour]
