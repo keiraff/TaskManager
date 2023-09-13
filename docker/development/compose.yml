@@ -39,7 +39,7 @@ services:
     networks:
       - task-manager-development-network
 
-  redis:
+  task-manager-development-redis:
     container_name: task-manager-development-redis
     image: redis:6-alpine
     restart: always
@@ -47,11 +47,11 @@ services:
       - "6379:6379"
     command: redis-server
     volumes:
-      - redis:/data
+      - task-manager-development-redis-data:/data
     networks:
       - task-manager-development-network
 
-  sidekiq:
+  task-manager-development-sidekiq:
     container_name: task-manager-development-sidekiq
     build:
       context: ../..
@@ -62,7 +62,7 @@ services:
     env_file: ../../.env
     depends_on:
       - task-manager-development-postgres
-      - redis
+      - task-manager-development-redis
     networks:
       - task-manager-development-network
 
@@ -72,4 +72,4 @@ networks:
 
 volumes:
   task-manager-development-postgres-data:
-  redis:
+  task-manager-development-redis-data:
