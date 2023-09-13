@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Users::Show do
-  subject(:service) { described_class.call(user, params) }
+  subject(:service) { described_class.new(user, params) }
 
   context "with valid params" do
     let(:user) { create(:user) }
@@ -18,6 +18,8 @@ RSpec.describe Users::Show do
       today_all_day_event
       current_event.save(validate: false)
       tomorrow_event
+
+      service.call
     end
 
     it "returns success" do

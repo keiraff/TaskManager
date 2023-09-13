@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Users::Create do
-  subject(:service) { described_class.call(user_attributes) }
+  subject(:service) { described_class.new(user_attributes) }
+
+  before do
+    service.call
+  end
 
   context "with valid params" do
     let(:user_attributes) do

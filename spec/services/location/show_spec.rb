@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe Location::Show do
-  subject(:service) { described_class.call(country: country, state: state) }
+  subject(:service) { described_class.new(country: country, state: state) }
 
   let(:country) { nil }
   let(:state) { nil }
+
+  before do
+    service.call
+  end
 
   context "when get states" do
     let(:country) { "US" }

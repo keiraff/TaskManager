@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe Events::Update do
-  subject(:service) { described_class.call(user, event, event_attributes) }
+  subject(:service) { described_class.new(user, event, event_attributes) }
 
   let(:user) { create(:user) }
   let(:category) { create(:category, user: user) }
   let(:event) { create(:event, user: user, category: category) }
+
+  before do
+    service.call
+  end
 
   context "with valid params" do
     let(:event_attributes) do
