@@ -4,17 +4,18 @@
 #
 # Table name: events
 #
-#  id          :bigint           not null, primary key
-#  all_day     :boolean          not null
-#  description :text
-#  ends_at     :datetime
-#  name        :text             not null
-#  notify_at   :datetime
-#  starts_at   :datetime         not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  category_id :bigint           not null
-#  user_id     :bigint           not null
+#  id                  :bigint           not null, primary key
+#  all_day             :boolean          not null
+#  description         :text
+#  ends_at             :datetime
+#  name                :text             not null
+#  notify_at           :datetime
+#  starts_at           :datetime         not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  category_id         :bigint           not null
+#  notification_job_id :string
+#  user_id             :bigint           not null
 #
 # Indexes
 #
@@ -41,6 +42,10 @@ class Event < ApplicationRecord
   validates :ends_at, presence: true, unless: :all_day?,
                       comparison: { greater_than: :starts_at, message: "must be greater than starts at" }
   validates :ends_at, absence: true, if: :all_day?
+  validates :notify_at, allow_blank: true,
+                        comparison: {
+                          greater_than_or_equal_to: Time.current, message: "must be greater or equal to current time"
+                        }
 
   def self.ransackable_attributes(_auth_object = nil)
     ["id", "starts_at", "name", "category_id"]

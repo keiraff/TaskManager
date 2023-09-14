@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_09_090830) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_05_130607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_090830) do
     t.datetime "notify_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notification_job_id"
     t.index ["user_id", "category_id"], name: "index_events_on_user_id_and_category_id"
     t.index ["user_id", "name"], name: "index_events_on_user_id_and_name"
     t.index ["user_id", "starts_at"], name: "index_events_on_user_id_and_starts_at"
