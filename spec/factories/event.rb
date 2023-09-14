@@ -6,7 +6,6 @@ FactoryBot.define do
     description { FFaker::Lorem.sentence }
     all_day { true }
     starts_at { 1.day.from_now }
-    notify_at { FFaker::Time.datetime }
 
     trait :not_all_day do
       all_day { false }

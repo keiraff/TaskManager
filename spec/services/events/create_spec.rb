@@ -24,8 +24,30 @@ RSpec.describe Events::Create do
       expect(service.success?).to be(true)
       expect(service.value.class).to be(Event)
 
-      expect(user.events.last).to have_attributes(event_attributes.except(:starts_at))
-      expect(user.events.last.starts_at.to_s).to eq(event_attributes[:starts_at].to_s)
+      expect(service.value).to have_attributes(event_attributes.except(:starts_at))
+      expect(service.value.starts_at.to_s).to eq(event_attributes[:starts_at].to_s)
+    end
+  end
+
+  context "with notify at" do
+    let(:event_attributes) do
+      {
+        name: "New Event",
+        all_day: true,
+        starts_at: 1.day.from_now,
+        category_id: category.id,
+        notify_at: 1.hour.from_now,
+      }
+    end
+
+    it "create notification" do
+      expect { service.call }.to change(SendNotificationJob.jobs, :size).by(1)
+
+      expect(service.success?).to be(true)
+      expect(service.value.class).to be(Event)
+
+      expect(service.value.notify_at.to_s).to eq(event_attributes[:notify_at].to_s)
+      expect(service.value.notification_job_id).to eq(SendNotificationJob.jobs.last["jid"])
     end
   end
 
