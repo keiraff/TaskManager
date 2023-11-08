@@ -34,11 +34,17 @@ RSpec.describe EmailNotifications::Update do
   end
 
   context "when notification set" do
-    let(:job_id) { SendNotificationJob.new.jid }
+    let(:scheduled_job) { SendNotificationJob.perform_at(1.second.from_now) }
+
+    before do
+      Sidekiq::Testing.disable! do
+        scheduled_job
+      end
+    end
 
     context "with notify_at" do
       let(:event) do
-        create(:event, user: user, category: category, notify_at: 1.hour.from_now, notification_job_id: job_id)
+        create(:event, user: user, category: category, notify_at: 1.hour.from_now, notification_job_id: scheduled_job)
       end
 
       it "returns new notification job id" do
@@ -50,7 +56,7 @@ RSpec.describe EmailNotifications::Update do
     end
 
     context "without notify_at" do
-      let(:event) { create(:event, user: user, category: category, notification_job_id: job_id) }
+      let(:event) { create(:event, user: user, category: category, notification_job_id: scheduled_job) }
 
       it "returns nil" do
         expect { service.call }.not_to change(SendNotificationJob.jobs, :size)
