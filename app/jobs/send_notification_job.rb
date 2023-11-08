@@ -8,8 +8,6 @@ class SendNotificationJob
     user = User.find(user_id)
     event = Event.find(event_id)
 
-    return unless jid == event.notification_job_id
-
     NotificationMailer.event_notification(event, user).deliver_now
 
     event.update(notification_job_id: nil, notify_at: nil)
