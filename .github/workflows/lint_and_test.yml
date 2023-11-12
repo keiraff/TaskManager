@@ -58,7 +58,6 @@ jobs:
         image: redis:6-alpine
         ports:
           - 6379:6379
-        options: --entrypoint redis-server
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -71,9 +70,11 @@ jobs:
       - name: Prepare ENV
         env:
           DATABASE_URL: postgresql://postgres:password@localhost:5432
+          REDIS_URL: redis://localhost:6379/0
         run: |
           bundle exec rails db:test:prepare
       - name: Run RSpec
         env:
           DATABASE_URL: postgresql://postgres:password@localhost:5432
+          REDIS_URL: redis://localhost:6379/0
         run: bundle exec rspec
