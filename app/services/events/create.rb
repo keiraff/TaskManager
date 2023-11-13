@@ -13,7 +13,7 @@ module Events
       self.value = event_with_assigned_attributes
 
       if event.save
-        send_email_notification
+        schedule_email_notification if event.notify_at.present?
 
         success(event)
       else
@@ -27,9 +27,7 @@ module Events
       @event ||= user.events.new(params)
     end
 
-    def send_email_notification
-      return if event.notify_at.blank?
-
+    def schedule_email_notification
       event.update(notification_job_id: SendNotificationJob.perform_at(event.notify_at, event.id, user.id))
     end
 
