@@ -2,10 +2,6 @@
 
 class AddNotificationJobIdToEvents < ActiveRecord::Migration[7.0]
   def change
-    safety_assured do
-      change_table :events, bulk: true do |t|
-        t.string :notification_job_id
-      end
-    end
+    add_column :events, :notification_job_id, :string
   end
 end
