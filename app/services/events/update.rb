@@ -13,10 +13,23 @@ module Events
     def call
       self.value = event_with_assigned_attributes
 
-      event.save ? success(event) : failure(event.errors.full_messages)
+      if event.save
+        update_email_notification
+
+        success(event)
+      else
+        failure(event.errors.full_messages)
+      end
     end
 
     private
+
+    def update_email_notification
+      result = EmailNotifications::Update.call(event_id: event.id, user_id: user.id, notify_at: event.notify_at,
+                                               job_id: event.notification_job_id)
+
+      event.update(notification_job_id: result.value)
+    end
 
     def utc_time_from_user_zone(user_time)
       return if user_time.blank?

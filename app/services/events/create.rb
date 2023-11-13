@@ -12,13 +12,23 @@ module Events
     def call
       self.value = event_with_assigned_attributes
 
-      event.save ? success(event) : failure(event.errors.full_messages)
+      if event.save
+        schedule_email_notification if event.notify_at.present?
+
+        success(event)
+      else
+        failure(event.errors.full_messages)
+      end
     end
 
     private
 
     def event
       @event ||= user.events.new(params)
+    end
+
+    def schedule_email_notification
+      event.update(notification_job_id: SendNotificationJob.perform_at(event.notify_at, event.id, user.id))
     end
 
     def utc_time_from_user_zone(user_time)
